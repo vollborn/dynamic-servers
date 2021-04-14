@@ -2,42 +2,33 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable,
+        SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name',
-        'email',
+        'salutation',
+        'first_name',
+        'last_name',
+        'username',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password'
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * @return HasMany
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function servers(): HasMany
+    {
+        return $this->hasMany(Server::class);
+    }
 }

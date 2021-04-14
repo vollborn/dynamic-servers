@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateNotificationChannelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,17 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('notification_channels', function (Blueprint $table) {
             $table->id();
 
-            $table->string('salutation');
-            $table->string('first_name');
-            $table->string('last_name');
-
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->string('api_token');
-
-            $table->dateTime('disabled_at');
+            $table->foreignId('server_id');
+            $table->unsignedInteger('notification_type_id');
+            $table->text('content');
 
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('server_id')->references('id')->on('servers');
         });
     }
 
@@ -38,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('notification_channels');
     }
 }
