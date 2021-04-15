@@ -13,8 +13,12 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
+    'failed'   => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
+    'user' => [
+        'unauthorized' => 'You are not logged in. Please login first.',
+        'disabled'     => 'Sorry. Your user is currently disabled. If you think this is a mistake, contact the support.'
+    ]
 ];

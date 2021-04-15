@@ -10,11 +10,26 @@ class NotificationChannel extends Model
 {
     use SoftDeletes;
 
+    public const DISCORD = 1;
+    public const EMAIL = 2;
+
     protected $fillable = [
         'server_id',
-        'notification_type_id',
-        'content'
+        'notification_channel_type_id',
+        'content',
+        'deleted_at'
     ];
+
+    /**
+     * @return int[]
+     */
+    public static function getAvailable(): array
+    {
+        return [
+            self::DISCORD,
+            self::EMAIL
+        ];
+    }
 
     /**
      * @return BelongsTo

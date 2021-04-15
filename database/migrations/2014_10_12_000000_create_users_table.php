@@ -22,9 +22,9 @@ class CreateUsersTable extends Migration
 
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('api_token');
+            $table->string('api_token')->nullable();
 
-            $table->dateTime('disabled_at');
+            $table->dateTime('disabled_at')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

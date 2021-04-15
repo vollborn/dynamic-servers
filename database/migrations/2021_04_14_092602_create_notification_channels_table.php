@@ -17,7 +17,7 @@ class CreateNotificationChannelsTable extends Migration
             $table->id();
 
             $table->foreignId('server_id');
-            $table->unsignedInteger('notification_type_id');
+            $table->unsignedInteger('notification_channel_type_id');
             $table->text('content');
 
             $table->timestamps();

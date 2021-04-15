@@ -2,17 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
+use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 
 class Server extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes,
+        CascadesDeletes;
+
+    protected array $cascadeDeletes = [
+        'notificationChannels',
+        'statistics'
+    ];
 
     protected $fillable = [
         'user_id',
+        'name',
         'ip_address',
         'ip_address_details',
         'server_token',
@@ -23,6 +33,12 @@ class Server extends Model
         'request_maximal_interval',
         'last_updated_at'
     ];
+
+    protected static function booted() {
+        static::addGlobalScope('own', function (Builder $builder) {
+            $builder->where('user_id', Auth::id());
+        });
+    }
 
     /**
      * @return BelongsTo

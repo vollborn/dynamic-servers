@@ -17,9 +17,10 @@ class CreateServersTable extends Migration
             $table->id();
 
             $table->foreignId('user_id');
+            $table->string('name');
 
-            $table->string('ip_address');
-            $table->text('ip_address_details');
+            $table->string('ip_address')->nullable();
+            $table->text('ip_address_details')->nullable();
 
             $table->string('server_token');
             $table->string('request_token');
@@ -31,7 +32,7 @@ class CreateServersTable extends Migration
             $table->integer('request_limit');
             $table->integer('request_maximal_interval');
 
-            $table->dateTime('last_updated_at');
+            $table->dateTime('last_updated_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

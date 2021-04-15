@@ -13,7 +13,8 @@ class Statistic extends Model
     protected $fillable = [
         'server_id',
         'requests_count',
-        'counting_at'
+        'counting_at',
+        'deleted_at'
     ];
 
     /**
