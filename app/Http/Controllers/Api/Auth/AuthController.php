@@ -4,14 +4,43 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthResource;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
+    /**
+     * @return JsonResponse
+     */
+    public function register(): JsonResponse
+    {
+        $data = request()->validate([
+            'firstName'  => 'required|string',
+            'lastName'   => 'required|string',
+            'username'   => 'required|string|unique:users',
+            'password'   => 'required|string'
+        ]);
+
+        try {
+            User::create([
+                'first_name' => $data['firstName'],
+                'last_name'  => $data['lastName'],
+                'username'   => $data['username'],
+                'password'   => Hash::make($data['password'])
+            ]);
+        } catch (Exception $exception) {
+            return $this->exception($exception);
+        }
+
+        return $this->json(__('controllers.user.registered'));
+    }
+
     /**
      * @return JsonResponse|Response
      */

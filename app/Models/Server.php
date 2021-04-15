@@ -30,6 +30,7 @@ class Server extends Model
         'request_interval',
         'custom_labels',
         'background_image_id',
+        'last_seen_at',
         'last_updated_at'
     ];
 

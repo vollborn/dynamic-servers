@@ -42,7 +42,7 @@ class NotificationChannelController extends Controller
             return $this->exception($exception);
         }
 
-        return $this->json(__('controllers.notification_channel.store.success'));
+        return $this->json(__('controllers.notification_channel.stored'));
     }
 
     /**
@@ -66,6 +66,6 @@ class NotificationChannelController extends Controller
             return $this->exception($exception);
         }
 
-        return $this->json(__('controllers.notification_channel.delete.success'));
+        return $this->json(__('controllers.notification_channel.deleted'));
     }
 }

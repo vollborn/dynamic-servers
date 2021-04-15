@@ -22,7 +22,6 @@ class UserSeeder extends BaseSeeder
     {
         return [
             [
-                'salutation' => 'Herr',
                 'first_name' => 'Oliver',
                 'last_name'  => 'Vollborn',
                 'username'   => 'webmaster',
@@ -30,7 +29,6 @@ class UserSeeder extends BaseSeeder
                 'api_token'  => 'test'
             ],
             [
-                'salutation' => 'Herr2',
                 'first_name' => 'Oliver2',
                 'last_name'  => 'Vollborn2',
                 'username'   => 'webmaster2',

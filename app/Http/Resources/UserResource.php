@@ -2,10 +2,13 @@
 
 namespace App\Http\Resources;
 
+use App\Traits\Functions\DecodeJson;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
 {
+    use DecodeJson;
+
     /**
      * Transform the resource into an array.
      *
@@ -16,10 +19,10 @@ class UserResource extends JsonResource
     {
         return [
             'id'         => $this->id,
-            'salutation' => $this->salutation,
             'firstName'  => $this->first_name,
             'lastName'   => $this->last_name,
             'username'   => $this->username,
+            'settings'   => $this->decodeJson($this->settings),
             'createdAt'  => $this->created_at,
             'updatedAt'  => $this->updated_at,
 

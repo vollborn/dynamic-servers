@@ -29,6 +29,7 @@ class CreateServersTable extends Migration
             $table->text('custom_labels')->nullable();
             $table->foreignId('background_image_id');
 
+            $table->dateTime('last_seen_at')->nullable();
             $table->dateTime('last_updated_at')->nullable();
             $table->timestamps();
             $table->softDeletes();

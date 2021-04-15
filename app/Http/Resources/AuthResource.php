@@ -2,10 +2,13 @@
 
 namespace App\Http\Resources;
 
+use App\Traits\Functions\DecodeJson;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AuthResource extends JsonResource
 {
+    use DecodeJson;
+
     /**
      * Transform the resource into an array.
      *
@@ -16,10 +19,10 @@ class AuthResource extends JsonResource
     {
         return [
             'id'         => $this->id,
-            'salutation' => $this->salutation,
             'firstName'  => $this->first_name,
             'lastName'   => $this->last_name,
             'username'   => $this->username,
+            'settings'   => $this->decodeJson($this->settings),
             'apiToken'   => $this->api_token,
             'createdAt'  => $this->created_at,
             'updatedAt'  => $this->updated_at,

@@ -67,7 +67,7 @@ class ServerController extends Controller
             return $this->exception($exception);
         }
 
-        return $this->json(__('controllers.server.store.success'));
+        return $this->json(__('controllers.server.stored'));
     }
 
     /**
@@ -94,7 +94,7 @@ class ServerController extends Controller
             return $this->exception($exception);
         }
 
-        return $this->json(__('controllers.server.update.success'));
+        return $this->json(__('controllers.server.updated'));
     }
 
     /**
@@ -109,7 +109,7 @@ class ServerController extends Controller
             return $this->exception($exception);
         }
 
-        return $this->json(__('controllers.server.delete.success'));
+        return $this->json(__('controllers.server.deleted'));
     }
 
 }

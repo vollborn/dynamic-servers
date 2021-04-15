@@ -25,6 +25,7 @@ class ServerResource extends JsonResource
             'requestToken'     => $this->request_token,
             'customLabels'     => $this->custom_labels,
             'requestInterval'  => $this->request_interval,
+            'lastSeenAt'       => $this->last_seen_at,
             'lastUpdatedAt'    => $this->last_updated_at,
             'createdAt'        => $this->created_at,
             'updatedAt'        => $this->updated_at,

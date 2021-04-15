@@ -6,25 +6,30 @@ return [
         'exception' => 'An unexpected error occurred.'
     ],
 
-    'server' => [
-        'store'  => [
-            'success' => 'Created a new server.'
-        ],
-        'update' => [
-            'success' => 'Updated server.'
-        ],
-        'delete' => [
-            'success' => 'Deleted server.'
+    'external' => [
+        'host' => [
+            'unchanged' => 'The IP address has not changed.',
+            'updated'   => 'The IP address has been updated.'
         ]
     ],
 
+    'user' => [
+        'registered' => 'Successfully registered'
+    ],
+
+    'profile' => [
+        'updated' => 'Your profile was updated.'
+    ],
+
+    'server' => [
+        'stored'  => 'Created a new server.',
+        'updated' => 'Updated server.',
+        'deleted' => 'Deleted server.'
+    ],
+
     'notification_channel' => [
-        'store' => [
-            'success' => 'Notification channel created.'
-        ],
-        'delete' => [
-            'success' => 'Notification channel deleted.'
-        ]
+        'stored'  => 'Notification channel created.',
+        'deleted' => 'Notification channel deleted.',
     ]
 
 ];
