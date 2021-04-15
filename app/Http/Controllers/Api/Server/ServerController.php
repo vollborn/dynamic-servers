@@ -46,22 +46,22 @@ class ServerController extends Controller
     public function store(): JsonResponse
     {
         $data = request()->validate([
-            'name'                   => 'required|string|max:255',
-            'requestMaximalInterval' => ['required', new RequestInterval],
-            'customLabels'           => 'nullable|json',
-            'backgroundImageId'      => 'nullable|int|exists:background_images,id',
+            'name'              => 'required|string|max:255',
+            'requestInterval'   => ['required', new RequestInterval],
+            'customLabels'      => 'nullable|json',
+            'backgroundImageId' => 'nullable|int|exists:background_images,id',
         ]);
 
         try {
             Server::create([
-                'user_id'                  => Auth::id(),
-                'name'                     => $data['name'],
-                'server_token'             => Str::random(config('servers.server_token_length')),
-                'request_token'            => Str::random(config('servers.request_token_length')),
-                'custom_labels'            => $this->verifyCustomLabels($data),
-                'background_image_id'      => $data['backgroundImageId'] ?? config('servers.default.background_image_id'),
-                'request_limit'            => config('servers.default.request_limit'),
-                'request_maximal_interval' => $data['requestMaximalInterval']
+                'user_id'             => Auth::id(),
+                'name'                => $data['name'],
+                'server_token'        => Str::random(config('servers.server_token_length')),
+                'request_token'       => Str::random(config('servers.request_token_length')),
+                'custom_labels'       => $this->verifyCustomLabels($data),
+                'background_image_id' => $data['backgroundImageId'] ?? config('servers.default.background_image_id'),
+                'request_limit'       => config('servers.default.request_limit'),
+                'request_interval'    => $data['requestInterval']
             ]);
         } catch (Exception $exception) {
             return $this->exception($exception);
@@ -77,18 +77,18 @@ class ServerController extends Controller
     public function update(Server $server): JsonResponse
     {
         $data = request()->validate([
-            'name'                   => 'required|string|max:255',
-            'requestMaximalInterval' => ['required', new RequestInterval],
-            'backgroundImageId'      => 'required|int|exists:background_images,id',
-            'customLabels'           => 'nullable|json',
+            'name'              => 'required|string|max:255',
+            'requestInterval'   => ['required', new RequestInterval],
+            'backgroundImageId' => 'required|int|exists:background_images,id',
+            'customLabels'      => 'nullable|json',
         ]);
 
         try {
             $server->update([
-                'name'                     => $data['name'],
-                'request_maximal_interval' => $data['requestMaximalInterval'],
-                'custom_labels'            => $this->verifyCustomLabels($data),
-                'background_image_id'      => $data['backgroundImageId'] ?? config('servers.background_image_id'),
+                'name'                => $data['name'],
+                'request_interval'    => $data['requestInterval'],
+                'custom_labels'       => $this->verifyCustomLabels($data),
+                'background_image_id' => $data['backgroundImageId'] ?? config('servers.background_image_id'),
             ]);
         } catch (Exception $exception) {
             return $this->exception($exception);

@@ -27,14 +27,14 @@ class Server extends Model
         'ip_address_details',
         'server_token',
         'request_token',
+        'request_interval',
         'custom_labels',
         'background_image_id',
-        'request_limit',
-        'request_maximal_interval',
         'last_updated_at'
     ];
 
-    protected static function booted() {
+    protected static function booted(): void
+    {
         static::addGlobalScope('own', function (Builder $builder) {
             $builder->where('user_id', Auth::id());
         });

@@ -24,13 +24,10 @@ class CreateServersTable extends Migration
 
             $table->string('server_token');
             $table->string('request_token');
+            $table->integer('request_interval');
 
             $table->text('custom_labels')->nullable();
-
             $table->foreignId('background_image_id');
-
-            $table->integer('request_limit');
-            $table->integer('request_maximal_interval');
 
             $table->dateTime('last_updated_at')->nullable();
             $table->timestamps();
