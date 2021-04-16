@@ -37,13 +37,15 @@ class HostController extends Controller
             $serverModel->ip_address_details = $this->getIpAddressDetails($ipAddress);
             $serverModel->last_updated_at = now();
 
-            $this->sendNotifications($serverModel);
+            // $this->sendNotifications($serverModel);
             $response = __('controllers.external.host.updated');
         } else {
             $response = __('controllers.external.host.unchanged');
         }
         $serverModel->last_seen_at = now();
         $serverModel->save();
+
+        $this->sendNotifications($serverModel);
 
         return $this->json($response);
     }
