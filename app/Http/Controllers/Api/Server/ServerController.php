@@ -60,7 +60,6 @@ class ServerController extends Controller
                 'request_token'       => Str::random(config('servers.request_token_length')),
                 'custom_labels'       => $this->verifyCustomLabels($data),
                 'background_image_id' => $data['backgroundImageId'] ?? config('servers.default.background_image_id'),
-                'request_limit'       => config('servers.default.request_limit'),
                 'request_interval'    => $data['requestInterval']
             ]);
         } catch (Exception $exception) {

@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Api\External\Host;
 use App\Http\Controllers\Controller;
 use App\Traits\Functions\GetIpAddress;
 use App\Traits\Server\GetServer;
+use App\Traits\Notifications\SendNotification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 class HostController extends Controller
 {
     use GetIpAddress,
-        GetServer;
+        GetServer,
+        SendNotification;
 
     /**
      * @param int $server
@@ -34,6 +36,8 @@ class HostController extends Controller
             $serverModel->ip_address = $ipAddress;
             $serverModel->ip_address_details = $this->getIpAddressDetails($ipAddress);
             $serverModel->last_updated_at = now();
+
+            $this->sendNotifications($serverModel);
             $response = __('controllers.external.host.updated');
         } else {
             $response = __('controllers.external.host.unchanged');

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends BaseSeeder
 {
@@ -20,21 +19,6 @@ class UserSeeder extends BaseSeeder
      */
     protected function getData(): array
     {
-        return [
-            [
-                'first_name' => 'Oliver',
-                'last_name'  => 'Vollborn',
-                'username'   => 'webmaster',
-                'password'   => Hash::make('change'),
-                'api_token'  => 'test'
-            ],
-            [
-                'first_name' => 'Oliver2',
-                'last_name'  => 'Vollborn2',
-                'username'   => 'webmaster2',
-                'password'   => Hash::make('change'),
-                'api_token'  => 'test2'
-            ]
-        ];
+        return [];
     }
 }

@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class NotificationChannel extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes,
+        Notifiable;
 
     public const DISCORD = 1;
     public const EMAIL = 2;
@@ -29,6 +31,16 @@ class NotificationChannel extends Model
             self::DISCORD,
             self::EMAIL
         ];
+    }
+
+    /**
+     * @param $driver
+     * @param null $notification
+     * @return mixed
+     */
+    public function routeNotificationFor($driver, $notification = null)
+    {
+        return $this->content;
     }
 
     /**

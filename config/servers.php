@@ -16,7 +16,6 @@ return [
     ],
 
     'default' => [
-        'request_limit'       => 200,
         'background_image_id' => 1
     ]
 ];
