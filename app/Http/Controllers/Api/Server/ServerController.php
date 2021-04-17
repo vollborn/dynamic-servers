@@ -76,7 +76,6 @@ class ServerController extends Controller
     public function update(Server $server): JsonResponse
     {
         $data = request()->validate([
-            'name'              => 'required|string|max:255',
             'requestInterval'   => ['required', new RequestInterval],
             'backgroundImageId' => 'required|int|exists:background_images,id',
             'customLabels'      => 'nullable|json',
@@ -84,7 +83,6 @@ class ServerController extends Controller
 
         try {
             $server->update([
-                'name'                => $data['name'],
                 'request_interval'    => $data['requestInterval'],
                 'custom_labels'       => $this->verifyCustomLabels($data),
                 'background_image_id' => $data['backgroundImageId'] ?? config('servers.background_image_id'),
