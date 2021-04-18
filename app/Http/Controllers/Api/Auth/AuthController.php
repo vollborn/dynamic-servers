@@ -7,6 +7,7 @@ use App\Http\Resources\AuthResource;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,11 +22,15 @@ class AuthController extends Controller
     public function register(): JsonResponse
     {
         $data = request()->validate([
-            'firstName'  => 'required|string',
-            'lastName'   => 'required|string',
-            'username'   => 'required|string|unique:users',
-            'password'   => 'required|string'
+            'firstName' => 'required|string',
+            'lastName'  => 'required|string',
+            'username'  => 'required|string',
+            'password'  => 'required|string'
         ]);
+
+        if (User::where('username', $data['username'])->exists()) {
+            return $this->json(__('controllers.user.username_taken'), Response::HTTP_CONFLICT);
+        }
 
         try {
             User::create([
@@ -38,31 +43,45 @@ class AuthController extends Controller
             return $this->exception($exception);
         }
 
-        return $this->json(__('controllers.user.registered'));
+        return $this->tryLogin([
+            'username' => $data['username'],
+            'password' => $data['password']
+        ]);
     }
 
     /**
-     * @return JsonResponse|Response
+     * @return Response
      */
-    public function login()
+    public function registerAvailable(): Response
+    {
+        request()->validate([
+            'username' => 'required|string|unique:users'
+        ]);
+        return response(null, Response::HTTP_OK);
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function login(): JsonResponse
     {
         $data = request()->validate([
             'username' => 'required|string',
             'password' => 'required|string'
         ]);
+        return $this->tryLogin($data);
+    }
 
+    protected function tryLogin($data): JsonResponse
+    {
         if (!Auth::attempt($data)) {
-            return response(null, Response::HTTP_UNAUTHORIZED);
+            return $this->json(__('auth.login.failed'), Response::HTTP_BAD_REQUEST);
         }
 
         $user = Auth::user();
 
-        Log::error($user);
-
         if ($user->disabled_at) {
-            return response()->json([
-                'message' => __('auth.user.disabled')
-            ], Response::HTTP_CONFLICT);
+            return $this->json(__('auth.user.disabled'), Response::HTTP_CONFLICT);
         }
 
         $user->forceFill([

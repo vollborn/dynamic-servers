@@ -1,3 +1,33 @@
 {
-  "test": "test-en"
+  "test": "test-en",
+  "navigation": {
+    "labels": {
+      "login": "Login",
+      "register": "Register"
+    }
+  },
+  "login": {
+    "labels": {
+      "username": "Username",
+      "password": "Password",
+      "register": "Register",
+      "login": "Login"
+    }
+  },
+  "register": {
+    "labels": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "username": "Username",
+      "password": "Password",
+      "accept_terms": "I accept that my data will be stored and further processed in order to provide the service.",
+      "register": "Register"
+    },
+    "states": {
+      "empty": "Please enter a username first",
+      "loading": "Loading...",
+      "success": "This username is available",
+      "error": "This username is already taken"
+    }
+  }
 }

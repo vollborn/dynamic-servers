@@ -6,7 +6,7 @@ import Vue from 'vue';
 import Axios from 'axios';
 
 let config = {
-  baseURL: '/api/internal',
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

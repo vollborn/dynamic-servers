@@ -14,7 +14,8 @@ return [
     ],
 
     'user' => [
-        'registered' => 'Successfully registered'
+        'username_taken' => 'This username is already taken.',
+        'registered'     => 'Successfully registered'
     ],
 
     'profile' => [
