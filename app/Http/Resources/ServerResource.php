@@ -19,6 +19,7 @@ class ServerResource extends JsonResource
     {
         return [
             'id'               => $this->id,
+            'name'             => $this->name,
             'ipAddress'        => $this->ip_address,
             'ipAddressDetails' => $this->decodeJson($this->ip_address_details),
             'serverToken'      => $this->server_token,

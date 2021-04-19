@@ -4,6 +4,17 @@
     "labels": {
       "login": "Login",
       "register": "Register"
+    },
+    "drawer": {
+      "overview": "Overview",
+      "dashboard": "Dashboard",
+      "support": "Support",
+      "servers": "Servers",
+      "no_servers": "You don't have any\nregistered servers!"
+    },
+    "profile": {
+      "settings": "Settings",
+      "logout": "Logout"
     }
   },
   "login": {

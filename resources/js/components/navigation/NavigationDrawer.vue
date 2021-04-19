@@ -13,51 +13,75 @@
     >
       <v-list-item-group>
         <v-subheader class="primary--text">
-          Übersicht
+          {{ $t('navigation.drawer.overview') }}
         </v-subheader>
 
-        <v-list-item link>
+        <v-list-item @click="redirect('dashboard')" link>
           <v-list-item-icon class="mr-2">
             <div class="d-flex justify-center align-center" style="width: 40px">
               <v-icon size="20">fa-border-all</v-icon>
             </div>
           </v-list-item-icon>
           <v-list-item-content>
-            Dashboard
+            {{ $t('navigation.drawer.dashboard') }}
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link>
+        <v-list-item @click="redirect('support')" link>
           <v-list-item-icon class="mr-2">
             <div class="d-flex justify-center align-center" style="width: 40px">
               <v-icon size="20">fa-envelope</v-icon>
             </div>
           </v-list-item-icon>
           <v-list-item-content>
-            Support
+            {{ $t('navigation.drawer.support') }}
           </v-list-item-content>
         </v-list-item>
 
         <v-subheader class="primary--text mt-4">
-          Server
+          {{ $t('navigation.drawer.servers') }}
         </v-subheader>
-        <v-list-item link>
-          <v-list-item-icon class="mr-2">
-            <div class="d-flex justify-center align-center" style="width: 40px">
-              <v-icon size="20">fa-envelope</v-icon>
-            </div>
-          </v-list-item-icon>
-          <v-list-item-content>
-            Server 1
-          </v-list-item-content>
-        </v-list-item>
+
+        <div v-if="servers.length > 0">
+          <v-list-item
+            v-for="server in servers"
+            :key="server.id"
+            link
+          >
+            <v-list-item-icon class="mr-2">
+              <div class="d-flex justify-center align-center" style="width: 40px">
+                <v-icon size="20">fa-server</v-icon>
+              </div>
+            </v-list-item-icon>
+            <v-list-item-content>
+              {{ server.name }}
+            </v-list-item-content>
+          </v-list-item>
+        </div>
+        <div
+          v-else-if="loadingServers"
+          class="mt-4 d-flex justify-center align-center"
+        >
+          <v-progress-circular
+            indeterminate
+            size="22"
+            width="2"
+          />
+        </div>
+        <v-subheader
+          v-else
+          class="mx-auto mt-2 text-center"
+          style="width: 80%"
+        >
+          {{ $t('navigation.drawer.no_servers') }}
+        </v-subheader>
       </v-list-item-group>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   props: {
@@ -73,7 +97,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('auth', ['isAuth'])
+    ...mapGetters('auth', ['isAuth']),
+    ...mapGetters('server', ['loadingServers', 'servers'])
+  },
+  created() {
+    if (this.isAuth && this.servers.length === 0) {
+      this.getServers();
+    }
   },
   watch: {
     isOpen(value) {
@@ -81,6 +111,17 @@ export default {
     },
     value(value) {
       this.isOpen = value;
+    },
+    isAuth(value) {
+      if (value === true) {
+        this.getServers();
+      }
+    }
+  },
+  methods: {
+    ...mapActions('server', ['getServers']),
+    redirect(name) {
+
     }
   }
 }
