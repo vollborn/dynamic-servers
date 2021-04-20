@@ -31,6 +31,7 @@ class CreateServersTable extends Migration
 
             $table->dateTime('last_seen_at')->nullable();
             $table->dateTime('last_updated_at')->nullable();
+            $table->dateTime('disabled_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use App\Traits\Functions\DecodeJson;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
 
 class ServerResource extends JsonResource
 {
@@ -30,6 +31,9 @@ class ServerResource extends JsonResource
             'lastUpdatedAt'    => $this->last_updated_at,
             'createdAt'        => $this->created_at,
             'updatedAt'        => $this->updated_at,
+            'disabledAt'       => $this->disabled_at,
+
+            'isAvailable' => $this->getAvailability(),
 
             'notificationChannels' => NotificationChannelResource::collection($this->whenLoaded('notificationChannels')),
             'backgroundImageId'    => $this->background_image_id,
@@ -37,5 +41,21 @@ class ServerResource extends JsonResource
             'userId'               => $this->user_id,
             'user'                 => new UserResource($this->whenLoaded('user'))
         ];
+    }
+
+    /**
+     * @return bool
+     */
+    protected function getAvailability(): bool
+    {
+        if (!$this->last_seen_at) {
+            return false;
+        }
+
+        if (Carbon::parse($this->last_seen_at)->addMilliseconds($this->request_interval)->isBefore(now())) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -16,7 +16,7 @@ export default new Vuetify({
 
         accent: '#fc045c',
         active: '#00d43e',
-        inactive: '#af2c18',
+        inactive: '#ff472b',
         disabled: '#5a5a5a'
       }
     }

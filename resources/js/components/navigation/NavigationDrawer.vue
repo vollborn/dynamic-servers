@@ -50,7 +50,7 @@
           >
             <v-list-item-icon class="mr-2">
               <div class="d-flex justify-center align-center" style="width: 40px">
-                <v-icon size="20">fa-server</v-icon>
+                <navigation-server-icon :server="server" />
               </div>
             </v-list-item-icon>
             <v-list-item-content>
@@ -82,8 +82,10 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import NavigationServerIcon from "./NavigationServerIcon";
 
 export default {
+  components: {NavigationServerIcon},
   props: {
     value: {
       type: Boolean,
