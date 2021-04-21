@@ -1,5 +1,6 @@
 <template>
   <v-menu
+    v-model="isOpen"
     bottom
     offset-y
     open-on-hover
@@ -10,6 +11,7 @@
         v-bind="attrs"
         v-on="on"
         class="mr-0 ml-3"
+        @click="isOpen = !isOpen"
       >
         <v-icon>
           fa-user
@@ -72,6 +74,11 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default {
+  data() {
+    return {
+      isOpen: false
+    }
+  },
   computed: {
     ...mapGetters('auth', ['user'])
   },

@@ -37,10 +37,19 @@ export default {
 
 <style lang="scss">
 .notifications-container {
+  z-index: 100;
   position: fixed;
   width: 98%;
   max-width: 300px;
   right: 1%;
   bottom: 1%;
+
+  @media only screen and (max-width: 600px) {
+    & {
+      max-width: unset;
+      width: 94%;
+      left: 3%;
+    }
+  }
 }
 </style>
