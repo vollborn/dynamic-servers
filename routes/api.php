@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
-use App\Http\Controllers\Api\NotificationChannel\NotificationChannelController;
+use App\Http\Controllers\Api\NotificationChannelType\NotificationChannelTypeController;
+use App\Http\Controllers\Api\ServerNotificationChannel\ServerNotificationChannelController;
 use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Server\ServerController;
-use App\Http\Controllers\Api\Statistic\StatisticController;
+use App\Http\Controllers\Api\ServerStatistic\ServerStatisticController;
 use App\Http\Controllers\Api\External\Client\ClientController;
 use App\Http\Controllers\Api\External\Host\HostController;
 use Illuminate\Support\Facades\Route;
@@ -55,19 +56,26 @@ Route::group(['middleware' => 'auth:api'], static function () {
         Route::delete('{server}', [ServerController::class, 'delete']);
 
         /*
-         * NotificationChannels
+         * Server NotificationChannels
          */
         Route::group(['prefix' => '{server}/notification-channels'], static function () {
-            Route::get('', [NotificationChannelController::class, 'index']);
-            Route::post('', [NotificationChannelController::class, 'store']);
-            Route::delete('{notificationChannel}', [NotificationChannelController::class, 'delete']);
+            Route::get('', [ServerNotificationChannelController::class, 'index']);
+            Route::post('', [ServerNotificationChannelController::class, 'store']);
+            Route::delete('{notificationChannel}', [ServerNotificationChannelController::class, 'delete']);
         });
 
         /*
-         * Statistics
+         * Server Statistics
          */
         Route::group(['prefix' => '{server}/statistics'], static function () {
-            Route::get('', [StatisticController::class, 'index']);
+            Route::get('', [ServerStatisticController::class, 'index']);
         });
+    });
+
+    /*
+     * NotificationChannelTypes
+     */
+    Route::group(['prefix' => 'notification-channel-types'], static function () {
+        Route::get('', [NotificationChannelTypeController::class, 'index']);
     });
 });

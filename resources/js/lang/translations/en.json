@@ -1,9 +1,17 @@
 {
   "test": "test-en",
+  "mixins": {
+    "notification_channels": {
+      "default": "Unknown",
+      "email": "E-Mail",
+      "discord": "Discord"
+    }
+  },
   "navigation": {
     "labels": {
       "login": "Login",
-      "register": "Register"
+      "register": "Register",
+      "create_server": "Create Server"
     },
     "drawer": {
       "overview": "Overview",
@@ -39,6 +47,46 @@
       "loading": "Loading...",
       "success": "This username is available",
       "error": "This username is already taken"
+    }
+  },
+  "dialogs": {
+    "server_create": {
+      "title": "Create a new server",
+      "actions": {
+        "reset": "Reset",
+        "create": "Create Server"
+      },
+      "general": {
+        "header": "General Information",
+        "server_name": "Server Name",
+        "server_name_hint": "The server name is visible for everyone with a request token.",
+        "request_interval": "Request Interval",
+        "request_interval_hint": "The request interval defines the period between the IP address updates."
+      },
+      "customization": {
+        "header": "Customization",
+        "title": "Title",
+        "subtitle": "Subtitle",
+        "text": "Description"
+      },
+      "notifications": {
+        "header": "Notifications"
+      }
+    }
+  },
+  "notification_channel": {
+    "form": {
+      "add": "Add",
+      "empty": "Add some notification channels, if you want to get automatically notified about ip address changes!",
+      "labels": {
+        "default": "Content",
+        "email_content": "Address",
+        "discord_content": "Webhook URL"
+      },
+      "headers": {
+        "channel": "Channel",
+        "content": "Content"
+      }
     }
   }
 }

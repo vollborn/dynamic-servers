@@ -2,12 +2,16 @@
 
 return [
     'discord' => [
+        'name' => 'Discord',
+
         'status' => [
             'text' => 'Got a new IP address for you!'
         ]
     ],
 
     'mail' => [
+        'name' => 'E-Mail',
+
         'greeting'   => 'Hey there!',
         'salutation' => 'Regards,<br />' . env('APP_NAME'),
 

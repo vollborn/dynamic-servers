@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss">
 .notifications-container {
-  z-index: 100;
+  z-index: 10000;
   position: fixed;
   width: 98%;
   max-width: 300px;

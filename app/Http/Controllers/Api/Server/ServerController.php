@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\Server;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ServerResource;
 use App\Models\Server;
+use App\Rules\CustomLabels;
+use App\Rules\NotificationChannels;
 use App\Rules\RequestInterval;
 use App\Traits\Server\VerifyCustomLabels;
 use Exception;
@@ -46,22 +48,33 @@ class ServerController extends Controller
     public function store(): JsonResponse
     {
         $data = request()->validate([
-            'name'              => 'required|string|max:255',
-            'requestInterval'   => ['required', new RequestInterval],
-            'customLabels'      => 'nullable|json',
-            'backgroundImageId' => 'nullable|int|exists:background_images,id',
+            'name'                 => 'required|string|max:255',
+            'requestInterval'      => ['required', new RequestInterval],
+            'notificationChannels' => ['required', new NotificationChannels],
+            'customLabels'         => ['required', new CustomLabels],
+            'backgroundImageId'    => 'nullable|int|exists:background_images,id',
         ]);
 
         try {
-            Server::create([
+            $server = Server::create([
                 'user_id'             => Auth::id(),
                 'name'                => $data['name'],
+                'custom_labels'       => $data['customLabels'],
+                'request_interval'    => $data['requestInterval'],
                 'server_token'        => Str::random(config('servers.server_token_length')),
                 'request_token'       => Str::random(config('servers.request_token_length')),
-                'custom_labels'       => $this->verifyCustomLabels($data),
-                'background_image_id' => $data['backgroundImageId'] ?? config('servers.default.background_image_id'),
-                'request_interval'    => $data['requestInterval']
+                'background_image_id' => $data['backgroundImageId'] ?? config('servers.default.background_image_id')
             ]);
+
+            if ($data['notificationChannels']) {
+                $decoded = json_decode($data['notificationChannels'], true, 512, JSON_THROW_ON_ERROR);
+                foreach ($decoded as $channel) {
+                    $server->notificationChannels()->create([
+                        'notification_channel_type_id' => $channel['notificationChannelTypeId'],
+                        'content'                      => $channel['content']
+                    ]);
+                }
+            }
         } catch (Exception $exception) {
             return $this->exception($exception);
         }
@@ -77,14 +90,14 @@ class ServerController extends Controller
     {
         $data = request()->validate([
             'requestInterval'   => ['required', new RequestInterval],
+            'customLabels'      => ['required', new CustomLabels],
             'backgroundImageId' => 'required|int|exists:background_images,id',
-            'customLabels'      => 'nullable|json',
         ]);
 
         try {
             $server->update([
                 'request_interval'    => $data['requestInterval'],
-                'custom_labels'       => $this->verifyCustomLabels($data),
+                'custom_labels'       => $data['customLabels'],
                 'background_image_id' => $data['backgroundImageId'] ?? config('servers.background_image_id'),
             ]);
         } catch (Exception $exception) {

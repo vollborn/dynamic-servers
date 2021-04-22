@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\Statistic;
+namespace App\Http\Controllers\Api\ServerStatistic;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\StatisticResource;
 use App\Models\Server;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class StatisticController extends Controller
+class ServerStatisticController extends Controller
 {
     /**
      * @param Server $server

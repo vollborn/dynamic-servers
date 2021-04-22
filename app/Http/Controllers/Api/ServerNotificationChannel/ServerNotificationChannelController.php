@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\NotificationChannel;
+namespace App\Http\Controllers\Api\ServerNotificationChannel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\NotificationChannelResource;
@@ -10,7 +10,7 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class NotificationChannelController extends Controller
+class ServerNotificationChannelController extends Controller
 {
     /**
      * @param Server $server

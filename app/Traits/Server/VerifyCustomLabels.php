@@ -22,11 +22,11 @@ trait VerifyCustomLabels
      */
     protected function verifyCustomLabels($data): ?array
     {
-        if (!Arr::has($data,'customLabels')) {
+        $decoded = $this->decodeJson($data['customLabels']);
+
+        if (!Arr::has($decoded,'customLabels')) {
             return null;
         }
-
-        $decoded = $this->decodeJson($data['customLabels']);
 
         if (!$this->validateDecodedLabels($decoded)) {
             return null;

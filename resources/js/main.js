@@ -4,6 +4,7 @@ import Chart from 'chart.js';
 import '@fortawesome/fontawesome-free/css/all.css';
 import VueTheMask from 'vue-the-mask'
 import Dates from './mixins/Dates';
+import Preview from './mixins/Preview';
 import axios from './plugins/axios';
 import vuetify from "./plugins/vuetify";
 import store from './plugins/store';
@@ -14,6 +15,7 @@ import App from './App.vue';
 let app = null;
 
 Vue.mixin(Dates);
+Vue.mixin(Preview);
 
 Chartkick.options = {
   colors: [

@@ -21,7 +21,7 @@
         alt=""
         style="height: 100%"
       />
-      <span class="ml-2 text-h6">
+      <span class="ml-2 text-h6 d-none d-md-block">
         Dynamic Servers
       </span>
     </div>
@@ -32,9 +32,7 @@
       v-if="isAuth"
       class="d-flex align-center"
     >
-      <server-create-button
-        class="mr-4"
-      />
+      <server-create-button />
       <v-divider vertical/>
       <navigation-profile-button/>
     </div>
@@ -57,7 +55,7 @@
 </template>
 
 <script>
-import ServerCreateButton from "../server/ServerCreateButton";
+import ServerCreateButton from "../server/ServerCreate/ServerCreateButton";
 import NavigationProfileButton from "./NavigationProfileButton";
 import {mapGetters} from "vuex";
 
