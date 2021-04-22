@@ -23,9 +23,10 @@ return [
     ],
 
     'server' => [
-        'stored'  => 'Created a new server.',
-        'updated' => 'Updated server.',
-        'deleted' => 'Deleted server.'
+        'stored'        => 'Created a new server.',
+        'limit_reached' => 'Could not create your server. You have reached your server limit.',
+        'updated'       => 'Updated server.',
+        'deleted'       => 'Deleted server.'
     ],
 
     'notification_channel' => [

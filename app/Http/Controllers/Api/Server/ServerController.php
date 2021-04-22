@@ -8,17 +8,15 @@ use App\Models\Server;
 use App\Rules\CustomLabels;
 use App\Rules\NotificationChannels;
 use App\Rules\RequestInterval;
-use App\Traits\Server\VerifyCustomLabels;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class ServerController extends Controller
 {
-    use VerifyCustomLabels;
-
     /**
      * @return AnonymousResourceCollection
      */
@@ -54,6 +52,11 @@ class ServerController extends Controller
             'customLabels'         => ['required', new CustomLabels],
             'backgroundImageId'    => 'nullable|int|exists:background_images,id',
         ]);
+
+        $user = Auth::user();
+        if ($user->servers()->count() >= $user->server_limit) {
+            return $this->json(__('controllers.server.limit_reached'), Response::HTTP_CONFLICT);
+        }
 
         try {
             $server = Server::create([

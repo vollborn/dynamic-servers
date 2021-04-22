@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'limit' => 10,
+
     'server_token_length'  => 80,
     'request_token_length' => 24,
 

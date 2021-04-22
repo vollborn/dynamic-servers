@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('api_token')->nullable();
 
+            $table->unsignedInteger('server_limit')->default(config('servers.limit'));
             $table->text('settings')->nullable();
 
             $table->dateTime('disabled_at')->nullable();

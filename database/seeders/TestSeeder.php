@@ -5,15 +5,12 @@ namespace Database\Seeders;
 use App\Models\NotificationChannel;
 use App\Models\Server;
 use App\Models\User;
-use App\Traits\Server\VerifyCustomLabels;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class TestSeeder extends Seeder
 {
-    use VerifyCustomLabels;
-
     /**
      * Run the database seeds.
      *
@@ -67,7 +64,6 @@ class TestSeeder extends Seeder
                 'name'                => 'Testserver',
                 'server_token'        => Str::random(config('servers.server_token_length')),
                 'request_token'       => Str::random(config('servers.request_token_length')),
-                'custom_labels'       => $this->verifyCustomLabels(null),
                 'background_image_id' => config('servers.default.background_image_id'),
                 'request_interval'    => config('servers.request_interval_min')
             ]

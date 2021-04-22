@@ -63,6 +63,7 @@
 import CustomizationCard from "./parts/CustomizationCard";
 import GeneralInfoCard from "./parts/GeneralInfoCard";
 import NotificationCard from "./parts/NotificationCard";
+import {mapActions} from "vuex";
 
 export default {
   components: {NotificationCard, GeneralInfoCard, CustomizationCard},
@@ -88,6 +89,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions('server', ['getServers']),
     close() {
       this.$emit('close')
     },
@@ -105,6 +107,7 @@ export default {
           this.$root.$notification.open(response.data.message)
           this.reset();
           this.close();
+          this.getServers();
         })
         .catch((error) => {
           this.$root.$notification.open(error.response.data.message, 'error')

@@ -18,14 +18,15 @@ class AuthResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'id'         => $this->id,
-            'firstName'  => $this->first_name,
-            'lastName'   => $this->last_name,
-            'username'   => $this->username,
-            'settings'   => $this->decodeJson($this->settings),
-            'apiToken'   => $this->api_token,
-            'createdAt'  => $this->created_at,
-            'updatedAt'  => $this->updated_at,
+            'id'          => $this->id,
+            'firstName'   => $this->first_name,
+            'lastName'    => $this->last_name,
+            'username'    => $this->username,
+            'settings'    => $this->decodeJson($this->settings),
+            'apiToken'    => $this->api_token,
+            'serverLimit' => $this->server_limit,
+            'createdAt'   => $this->created_at,
+            'updatedAt'   => $this->updated_at,
 
             'servers' => ServerResource::collection($this->whenLoaded('servers'))
         ];

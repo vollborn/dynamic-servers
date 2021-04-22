@@ -32,8 +32,8 @@
       v-if="isAuth"
       class="d-flex align-center"
     >
-      <server-create-button />
-      <v-divider vertical/>
+      <server-create-button v-if="showAddServerButton" />
+      <v-divider vertical v-if="showAddServerButton"/>
       <navigation-profile-button/>
     </div>
     <div v-else>
@@ -70,7 +70,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('auth', ['isAuth'])
+    ...mapGetters('auth', ['isAuth', 'user']),
+    ...mapGetters('server', ['servers', 'isLoadingServers']),
+    showAddServerButton() {
+      return !this.isLoadingServers && this.servers.length < this.user.serverLimit;
+    }
   }
 }
 </script>
