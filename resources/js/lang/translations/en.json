@@ -59,6 +59,9 @@
       "server_name": "Servername",
       "server_id": "Server ID",
       "ip_address": "IP Address",
+      "last_seen_at": "Last seen at",
+      "created_at": "Created at",
+      "updated_at": "Updated at",
       "server_token": "Server Token",
       "request_token": "Request Token"
     },

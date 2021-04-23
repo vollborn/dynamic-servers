@@ -63,7 +63,7 @@ class StatusNotification extends Notification
     public function toDiscord(): DiscordMessage
     {
         return (new DiscordMessage)
-            ->from(env('APP_NAME'), 'https://i.imgur.com/wSTFkRM.png')
+            ->from(env('APP_NAME'), env('APP_URL') . '/assets/logo.png')
             ->embed(function ($embed) {
                 $text = __('notifications.discord.status.text');
                 $textData = [

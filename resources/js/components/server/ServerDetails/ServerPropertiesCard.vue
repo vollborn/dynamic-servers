@@ -7,23 +7,49 @@
     <v-divider />
     <v-card-text class="my-2">
       <v-row>
-        <v-col cols="6">
-          {{ $t('server.properties.server_name') }}
+        <v-col cols="12" lg="6">
+          <v-row>
+            <v-col cols="6">
+              {{ $t('server.properties.server_name') }}
+            </v-col>
+            <v-col cols="6">
+              {{ server.name }}
+            </v-col>
+            <v-col cols="6">
+              {{ $t('server.properties.server_id') }}
+            </v-col>
+            <v-col cols="6">
+              {{ server.id }}
+            </v-col>
+            <v-col cols="6">
+              {{ $t('server.properties.ip_address') }}
+            </v-col>
+            <v-col cols="6">
+              {{ server.ipAddress ? server.ipAddress : '-' }}
+            </v-col>
+          </v-row>
         </v-col>
-        <v-col cols="6">
-          {{ server.name }}
-        </v-col>
-        <v-col cols="6">
-          {{ $t('server.properties.server_id') }}
-        </v-col>
-        <v-col cols="6">
-          {{ server.id }}
-        </v-col>
-        <v-col cols="6">
-          {{ $t('server.properties.ip_address') }}
-        </v-col>
-        <v-col cols="6">
-          {{ server.ipAddress ? server.ipAddress : '-' }}
+        <v-col cols="12" lg="6">
+          <v-row>
+            <v-col cols="6">
+              {{ $t('server.properties.last_seen_at') }}
+            </v-col>
+            <v-col cols="6">
+              {{ server.lastSeenAt | dateTime }}
+            </v-col>
+            <v-col cols="6">
+              {{ $t('server.properties.created_at') }}
+            </v-col>
+            <v-col cols="6">
+              {{ server.createdAt | dateTime }}
+            </v-col>
+            <v-col cols="6">
+              {{ $t('server.properties.updated_at') }}
+            </v-col>
+            <v-col cols="6">
+              {{ server.updatedAt | dateTime }}
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-card-text>
