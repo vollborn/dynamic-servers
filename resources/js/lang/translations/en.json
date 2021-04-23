@@ -65,6 +65,10 @@
     "charts": {
       "requests": "Requests",
       "downtime": "Downtime"
+    },
+    "customization": {
+      "title": "Customization",
+      "save": "Save"
     }
   },
   "dialogs": {

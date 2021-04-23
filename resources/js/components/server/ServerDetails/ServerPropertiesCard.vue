@@ -1,6 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
+      <server-status-icon :server="server" class="mr-3" />
       {{ server.name }}
     </v-card-title>
     <v-divider />
@@ -52,9 +53,10 @@
 
 <script>
 import ViewTokenButton from "./ViewTokenButton";
+import ServerStatusIcon from "../parts/ServerStatusIcon";
 
 export default {
-  components: {ViewTokenButton},
+  components: {ServerStatusIcon, ViewTokenButton},
   props: {
     server: {
       type: Object,

@@ -18,6 +18,7 @@
       maxlength="2000"
     />
     <background-image-picker
+      v-if="expanded"
       v-model="server.backgroundImageId"
       class="mt-2"
     />
@@ -43,6 +44,11 @@ export default {
           }
         }
       })
+    },
+    expanded: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   data() {

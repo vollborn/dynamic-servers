@@ -25,7 +25,7 @@ class ServerResource extends JsonResource
             'ipAddressDetails' => $this->decodeJson($this->ip_address_details),
             'serverToken'      => $this->server_token,
             'requestToken'     => $this->request_token,
-            'customLabels'     => $this->custom_labels,
+            'customLabels'     => $this->decodeJson($this->custom_labels) ?? $this->getDefaultLabels(),
             'requestInterval'  => $this->request_interval,
             'lastSeenAt'       => $this->last_seen_at,
             'lastUpdatedAt'    => $this->last_updated_at,
@@ -57,5 +57,17 @@ class ServerResource extends JsonResource
         }
 
         return true;
+    }
+
+    /**
+     * @return null[]
+     */
+    protected function getDefaultLabels(): array
+    {
+        return [
+            'title'    => null,
+            'subtitle' => null,
+            'text'     => null
+        ];
     }
 }

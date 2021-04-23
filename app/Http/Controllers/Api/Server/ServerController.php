@@ -92,16 +92,14 @@ class ServerController extends Controller
     public function update(Server $server): JsonResponse
     {
         $data = request()->validate([
-            'requestInterval'   => ['required', new RequestInterval],
             'customLabels'      => ['required', new CustomLabels],
             'backgroundImageId' => 'required|int|exists:background_images,id',
         ]);
 
         try {
             $server->update([
-                'request_interval'    => $data['requestInterval'],
                 'custom_labels'       => $data['customLabels'],
-                'background_image_id' => $data['backgroundImageId'] ?? config('servers.background_image_id'),
+                'background_image_id' => $data['backgroundImageId'],
             ]);
         } catch (Exception $exception) {
             return $this->exception($exception);

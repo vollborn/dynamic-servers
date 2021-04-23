@@ -6,7 +6,7 @@
       class="mx-auto"
     />
     <server-details
-      :server="server"
+      v-model="server"
       v-else
     />
   </v-container>
