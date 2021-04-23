@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\BackgroundImage;
+use Illuminate\Support\Facades\Storage;
 
 class BackgroundImageSeeder extends BaseSeeder
 {
@@ -13,11 +14,14 @@ class BackgroundImageSeeder extends BaseSeeder
 
     protected function getData(): array
     {
-        return [
-            [
-                'storage_path' => '1.jpg',
-                'public_path'  => '/backgrounds/1.jpg'
-            ]
-        ];
+        $files = collect(Storage::disk('backgrounds')->files())
+            ->map(static function ($item) {
+                return [
+                    'storage_path' => $item,
+                    'public_path'  => '/assets/backgrounds/' . $item
+                ];
+            });
+
+        return $files->toArray();
     }
 }

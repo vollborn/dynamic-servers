@@ -44,7 +44,7 @@ return [
 
         'backgrounds' => [
             'driver' => 'local',
-            'root'   => public_path('/backgrounds')
+            'root'   => public_path('/assets/backgrounds')
         ],
 
         's3' => [
