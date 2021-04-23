@@ -4,29 +4,15 @@
       {{ $t('dialogs.server_create.customization.header') }}
     </v-card-title>
     <v-card-text>
-      <v-text-field
-        v-model="server.customLabels.title"
-        :label="$t('dialogs.server_create.customization.title')"
-        maxlength="50"
-      />
-      <v-text-field
-        v-model="server.customLabels.subtitle"
-        :label="$t('dialogs.server_create.customization.subtitle')"
-        maxlength="100"
-      />
-      <v-textarea
-        class="mt-1"
-        v-model="server.customLabels.text"
-        :label="$t('dialogs.server_create.customization.text')"
-        rows="3"
-        maxlength="2000"
-      />
+      <server-customization-form v-model="server" />
     </v-card-text>
   </v-card>
 </template>
 
 <script>
+import ServerCustomizationForm from "../../parts/ServerCustomizationForm";
 export default {
+  components: {ServerCustomizationForm},
   props: {
     value: {
       type: Object,

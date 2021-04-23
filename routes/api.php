@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\BackgroundImage\BackgroundImageController;
 use App\Http\Controllers\Api\NotificationChannelType\NotificationChannelTypeController;
 use App\Http\Controllers\Api\ServerNotificationChannel\ServerNotificationChannelController;
 use App\Http\Controllers\Api\Profile\ProfileController;
@@ -80,5 +81,12 @@ Route::group(['middleware' => 'auth:api'], static function () {
      */
     Route::group(['prefix' => 'notification-channel-types'], static function () {
         Route::get('', [NotificationChannelTypeController::class, 'index']);
+    });
+
+    /*
+     * BackgroundImages
+     */
+    Route::group(['prefix' => 'background-images'], static function () {
+        Route::get('', [BackgroundImageController::class, 'index']);
     });
 });

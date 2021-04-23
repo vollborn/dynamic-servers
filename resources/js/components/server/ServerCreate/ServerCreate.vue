@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card tile>
     <v-toolbar
       tile
       class="px-2"
@@ -29,7 +29,7 @@
       </v-row>
     </v-card-text>
     <v-divider/>
-    <v-card-text class="mt-2">
+    <v-card-text class="mt-2 pb-0 mb-0">
       <v-row>
         <v-col cols="12" class="d-flex justify-space-between">
           <v-btn
@@ -73,6 +73,7 @@ export default {
       server: {
         name: null,
         requestInterval: 12000,
+        backgroundImageId: null,
         customLabels: {
           title: null,
           subtitle: null,
@@ -91,6 +92,7 @@ export default {
   methods: {
     ...mapActions('server', ['getServers']),
     close() {
+      this.reset();
       this.$emit('close')
     },
     submit() {
@@ -99,13 +101,13 @@ export default {
         name: this.server.name,
         requestInterval: this.server.requestInterval,
         customLabels: JSON.stringify(this.server.customLabels),
-        notificationChannels: JSON.stringify(this.server.notificationChannels)
+        notificationChannels: JSON.stringify(this.server.notificationChannels),
+        backgroundImageId: this.server.backgroundImageId
       };
 
       window.axios.post('servers', params)
         .then((response) => {
           this.$root.$notification.open(response.data.message)
-          this.reset();
           this.close();
           this.getServers();
         })
@@ -120,6 +122,7 @@ export default {
       this.server = {
         name: null,
         requestInterval: 12000,
+        backgroundImageId: null,
         customLabels: {
           title: null,
           subtitle: null,

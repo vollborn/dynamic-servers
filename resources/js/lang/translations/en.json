@@ -50,6 +50,11 @@
     }
   },
   "server": {
+    "customization_form": {
+      "title": "Title",
+      "subtitle": "Subtitle",
+      "text": "Description"
+    },
     "properties": {
       "server_name": "Servername",
       "server_id": "Server ID",
@@ -77,10 +82,7 @@
         "request_interval_hint": "The request interval defines the period between the IP address updates."
       },
       "customization": {
-        "header": "Customization",
-        "title": "Title",
-        "subtitle": "Subtitle",
-        "text": "Description"
+        "header": "Customization"
       },
       "notifications": {
         "header": "Notifications"
@@ -100,6 +102,12 @@
         "channel": "Channel",
         "content": "Content"
       }
+    }
+  },
+  "background_image": {
+    "picker": {
+      "header": "Choose a background",
+      "select": "Choose background"
     }
   }
 }
