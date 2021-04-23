@@ -4,16 +4,19 @@ namespace App\Http\Controllers\Api\External\Host;
 
 use App\Http\Controllers\Controller;
 use App\Traits\Functions\GetIpAddress;
+use App\Traits\Server\CheckForDowntime;
 use App\Traits\Server\GetServer;
 use App\Traits\Notifications\SendNotification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class HostController extends Controller
 {
     use GetIpAddress,
         GetServer,
-        SendNotification;
+        SendNotification,
+        CheckForDowntime;
 
     /**
      * @param int $server
@@ -30,6 +33,8 @@ class HostController extends Controller
         if ($serverModel->server_token !== $token) {
             abort(Response::HTTP_UNAUTHORIZED);
         }
+
+        $this->checkforDowntime($serverModel);
 
         $ipAddress = $this->getIpAddress();
         if ($serverModel->ip_address !== $ipAddress) {

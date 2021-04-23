@@ -19,7 +19,7 @@ Vue.mixin(Preview);
 
 Chartkick.options = {
   colors: [
-    '#e72582'
+    '#fc045c'
   ]
 };
 Vue.use(Chartkick.use(Chart));

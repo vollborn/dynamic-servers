@@ -46,6 +46,7 @@
           <v-list-item
             v-for="server in servers"
             :key="server.id"
+            @click="openServer(server.id)"
             link
           >
             <v-list-item-icon class="mr-2">
@@ -123,7 +124,10 @@ export default {
   methods: {
     ...mapActions('server', ['getServers']),
     redirect(name) {
-
+      this.$router.push({name: name})
+    },
+    openServer(id) {
+      this.$router.push('/server/' + id);
     }
   }
 }

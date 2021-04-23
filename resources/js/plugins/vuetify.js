@@ -4,8 +4,6 @@ import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify);
 
-// https://colorhunt.co/palette/253352
-
 export default new Vuetify({
   theme: {
     dark: true,

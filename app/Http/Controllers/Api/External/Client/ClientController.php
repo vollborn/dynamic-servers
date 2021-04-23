@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Api\External\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\External\ServerResource;
 use App\Traits\Server\GetServer;
+use App\Traits\Statistic\CountServerRequest;
 use Illuminate\Http\Response;
 
 class ClientController extends Controller
 {
-    use GetServer;
+    use GetServer,
+        CountServerRequest;
 
     /**
      * @param int $server
@@ -28,6 +30,7 @@ class ClientController extends Controller
             abort(Response::HTTP_UNAUTHORIZED);
         }
 
+        $this->countServerRequest($serverModel);
         return new ServerResource($serverModel);
     }
 }

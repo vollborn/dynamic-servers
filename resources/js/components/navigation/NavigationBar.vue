@@ -71,9 +71,9 @@ export default {
   },
   computed: {
     ...mapGetters('auth', ['isAuth', 'user']),
-    ...mapGetters('server', ['servers', 'isLoadingServers']),
+    ...mapGetters('server', ['servers', 'loadingServers']),
     showAddServerButton() {
-      return !this.isLoadingServers && this.servers.length < this.user.serverLimit;
+      return !this.loadingServers && this.servers.length < this.user.serverLimit;
     }
   }
 }

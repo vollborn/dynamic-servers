@@ -17,6 +17,7 @@ class StatisticResource extends JsonResource
         return [
             'id'            => $this->id,
             'requestsCount' => $this->requests_count,
+            'downtime'      => $this->downtime,
             'countingAt'    => $this->counting_at,
             'createdAt'     => $this->created_at,
             'updatedAt'     => $this->updated_at,

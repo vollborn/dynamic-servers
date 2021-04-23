@@ -15,9 +15,10 @@ class CreateStatisticsTable extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->id();
-
             $table->foreignId('server_id');
-            $table->unsignedInteger('requests_count');
+
+            $table->unsignedInteger('requests_count')->default(0);
+            $table->unsignedInteger('downtime')->default(0); // in seconds
 
             $table->date('counting_at');
             $table->timestamps();

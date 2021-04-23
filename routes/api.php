@@ -55,6 +55,9 @@ Route::group(['middleware' => 'auth:api'], static function () {
         Route::put('{server}', [ServerController::class, 'update']);
         Route::delete('{server}', [ServerController::class, 'delete']);
 
+        Route::post('{server}/enable', [ServerController::class, 'enable']);
+        Route::post('{server}/disable', [ServerController::class, 'disable']);
+
         /*
          * Server NotificationChannels
          */

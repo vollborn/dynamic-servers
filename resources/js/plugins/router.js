@@ -28,6 +28,18 @@ const routes = [
     name: 'dashboard',
     component: () => import('./../views/dashboard/Dashboard.vue'),
     meta: {auth: true}
+  },
+  {
+    path: '/support',
+    name: 'support',
+    component: () => import('./../views/support/Support.vue'),
+    meta: {auth: true}
+  },
+  {
+    path: '/server/:server',
+    name: 'server',
+    component: () => import('./../views/server/Server.vue'),
+    meta: {auth: true}
   }
 ];
 

@@ -26,7 +26,9 @@ return [
         'stored'        => 'Created a new server.',
         'limit_reached' => 'Could not create your server. You have reached your server limit.',
         'updated'       => 'Updated server.',
-        'deleted'       => 'Deleted server.'
+        'deleted'       => 'Deleted server.',
+        'disabled'      => 'Server disabled.',
+        'enabled'       => 'Server enabled'
     ],
 
     'notification_channel' => [

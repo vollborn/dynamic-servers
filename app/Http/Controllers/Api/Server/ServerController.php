@@ -125,4 +125,26 @@ class ServerController extends Controller
         return $this->json(__('controllers.server.deleted'));
     }
 
+    /**
+     * @param Server $server
+     * @return JsonResponse
+     */
+    public function disable(Server $server): JsonResponse
+    {
+        $server->disabled_at = now();
+        $server->save();
+        return $this->json('controllers.server.disabled');
+    }
+
+    /**
+     * @param Server $server
+     * @return JsonResponse
+     */
+    public function enable(Server $server): JsonResponse
+    {
+        $server->disabled_at = null;
+        $server->save();
+        return $this->json('controllers.server.enabled');
+    }
+
 }
