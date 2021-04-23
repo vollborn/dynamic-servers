@@ -19,6 +19,14 @@
       >
         <v-icon>{{ expanded ? 'fa-chevron-up' : 'fa-chevron-down' }}</v-icon>
       </v-btn>
+      <v-btn
+        @click="reset"
+        :disabled="!canSave"
+        color="primary"
+        icon
+      >
+        <v-icon>fa-redo</v-icon>
+      </v-btn>
       <v-spacer/>
       <v-btn
         @click="save"
@@ -67,6 +75,9 @@ export default {
     }
   },
   methods: {
+    reset() {
+      this.server = cloneDeep(this.value);
+    },
     save() {
       this.isLoading = true;
 
