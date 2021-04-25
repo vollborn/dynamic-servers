@@ -6,7 +6,7 @@ import Vue from 'vue';
 import Axios from 'axios';
 
 let config = {
-  baseURL: '/api',
+  baseURL: process.env.MIX_API_URL,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

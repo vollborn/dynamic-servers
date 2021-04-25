@@ -1,10 +1,10 @@
 <template>
   <v-card>
     <v-card-title>
-      <server-status-icon :server="server" class="mr-3" />
+      <server-status-icon :server="server" class="mr-3"/>
       {{ server.name }}
     </v-card-title>
-    <v-divider />
+    <v-divider/>
     <v-card-text class="my-2">
       <v-row>
         <v-col cols="12" lg="6">
@@ -57,20 +57,20 @@
     <v-card-text class="my-2">
       <v-row>
         <v-col cols="6">
-          {{ $t('server.properties.server_token') }}
+          {{ $t('server.properties.dialogs.server_token') }}
         </v-col>
         <v-col cols="6" class="d-flex">
           {{ getPreview(server.serverToken, 20, true) }}
           <v-spacer/>
-          <view-token-button :label="'Server Token'" :token="server.serverToken"/>
+          <server-token-dialog :server="server" />
         </v-col>
         <v-col cols="6">
-          {{ $t('server.properties.request_token') }}
+          {{ $t('server.properties.dialogs.request_token') }}
         </v-col>
         <v-col cols="6" class="d-flex">
           {{ getPreview(server.requestToken, 10, true) }}
           <v-spacer/>
-          <view-token-button :label="'Request Token'" :token="server.requestToken"/>
+          <request-token-dialog :server="server" />
         </v-col>
       </v-row>
     </v-card-text>
@@ -78,11 +78,12 @@
 </template>
 
 <script>
-import ViewTokenButton from "./ViewTokenButton";
 import ServerStatusIcon from "../parts/ServerStatusIcon";
+import ServerTokenDialog from "./ServerTokenDialog";
+import RequestTokenDialog from "./RequestTokenDialog";
 
 export default {
-  components: {ServerStatusIcon, ViewTokenButton},
+  components: {RequestTokenDialog, ServerTokenDialog, ServerStatusIcon},
   props: {
     server: {
       type: Object,
