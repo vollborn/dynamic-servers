@@ -121,5 +121,10 @@
       "header": "Choose a background",
       "select": "Choose background"
     }
+  },
+  "status": {
+    "title": "Oops!",
+    "subtitle": "Something went wrong.",
+    "text": " Please check your entered url. Maybe it is just a spelling mistake?"
   }
 }

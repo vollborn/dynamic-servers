@@ -6,7 +6,7 @@
     elevation="2"
   >
     <v-app-bar-nav-icon
-      v-if="isAuth"
+      v-if="isAuth && !slimInterface"
       class="mr-2"
       @click="toggle"
     />
@@ -29,12 +29,15 @@
     <v-spacer/>
 
     <div
-      v-if="isAuth"
-      class="d-flex align-center"
-    >
-      <server-create-button v-if="showAddServerButton" />
-      <v-divider vertical v-if="showAddServerButton"/>
-      <navigation-profile-button/>
+      v-if="isAuth">
+      <div
+        v-if="!slimInterface"
+        class="d-flex align-center"
+      >
+        <server-create-button v-if="showAddServerButton"/>
+        <v-divider vertical v-if="showAddServerButton"/>
+        <navigation-profile-button/>
+      </div>
     </div>
     <div v-else>
       <v-btn
@@ -61,6 +64,13 @@ import {mapGetters} from "vuex";
 
 export default {
   components: {NavigationProfileButton, ServerCreateButton},
+  props: {
+    slimInterface: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
   methods: {
     toggle() {
       this.$emit('toggle')

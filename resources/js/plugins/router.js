@@ -10,6 +10,12 @@ const routes = [
     meta: {auth: false}
   },
   {
+    path: '/status/:server/:token',
+    name: 'status',
+    component: () => import('./../views/status/Status.vue'),
+    meta: {auth: false}
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('./../views/login/Login.vue'),
@@ -43,7 +49,7 @@ const routes = [
   }
 ];
 
-const router =  new VueRouter({
+const router = new VueRouter({
   routes
 });
 

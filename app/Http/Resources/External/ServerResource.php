@@ -20,9 +20,10 @@ class ServerResource extends JsonResource
     {
         return [
             'id'               => $this->id,
+            'name'             => $this->name,
             'ipAddress'        => $this->ip_address,
             'ipAddressDetails' => $this->decodeJson($this->ip_address_details),
-            'customLabels'     => $this->custom_labels,
+            'customLabels'     => $this->decodeJson($this->custom_labels),
             'lastSeenAt'       => $this->last_seen_at,
             'lastUpdatedAt'    => $this->last_updated_at,
 

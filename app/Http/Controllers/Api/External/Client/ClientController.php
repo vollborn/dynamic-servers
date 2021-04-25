@@ -27,7 +27,7 @@ class ClientController extends Controller
         }
 
         if ($serverModel->request_token !== $token) {
-            abort(Response::HTTP_UNAUTHORIZED);
+            abort(Response::HTTP_BAD_REQUEST);
         }
 
         $this->countServerRequest($serverModel);

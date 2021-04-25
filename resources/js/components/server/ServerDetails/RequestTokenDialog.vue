@@ -109,7 +109,7 @@ export default {
   methods: {
     getAccessUrl() {
       return process.env.MIX_APP_URL
-        + '/api/status/'
+        + '/#/status/'
         + this.server.id
         + '/'
         + this.server.requestToken;

@@ -1,7 +1,14 @@
 <template>
   <div>
-    <navigation-bar @toggle="toggle"/>
-    <navigation-drawer v-model="isOpen" @toggle="toggle"/>
+    <navigation-bar
+      :slim-interface="slimInterface"
+      @toggle="toggle"
+    />
+    <navigation-drawer
+      v-if="!slimInterface"
+      v-model="isOpen"
+      @toggle="toggle"
+    />
   </div>
 </template>
 <script>
@@ -13,6 +20,11 @@ export default {
   data() {
     return {
       isOpen: true
+    }
+  },
+  computed: {
+    slimInterface() {
+      return this.$route.name === 'status' || this.$route.name === 'home';
     }
   },
   methods: {
