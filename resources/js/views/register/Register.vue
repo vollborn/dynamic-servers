@@ -103,7 +103,7 @@ export default {
   methods: {
     ...mapActions('auth', ['register']),
     redirect(name) {
-      this.$router.push({name: name})
+      this.pushRouteTo({name: name})
     },
     performRegister() {
       this.isLoading = true;

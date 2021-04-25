@@ -3,6 +3,7 @@ import Chartkick from 'vue-chartkick';
 import Chart from 'chart.js';
 import '@fortawesome/fontawesome-free/css/all.css';
 import VueTheMask from 'vue-the-mask'
+import PushRoute from "./mixins/PushRoute";
 import Dates from './mixins/Dates';
 import Preview from './mixins/Preview';
 import axios from './plugins/axios';
@@ -16,6 +17,7 @@ let app = null;
 
 Vue.mixin(Dates);
 Vue.mixin(Preview);
+Vue.mixin(PushRoute);
 
 Chartkick.options = {
   colors: [

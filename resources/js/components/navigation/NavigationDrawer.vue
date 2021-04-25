@@ -124,10 +124,10 @@ export default {
   methods: {
     ...mapActions('server', ['getServers']),
     redirect(name) {
-      this.$router.push({name: name})
+      this.pushRouteTo({name: name})
     },
     openServer(id) {
-      this.$router.push('/server/' + id);
+      this.pushRouteTo('/server/' + id);
     }
   }
 }

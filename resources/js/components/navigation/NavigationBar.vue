@@ -76,7 +76,7 @@ export default {
       this.$emit('toggle')
     },
     redirect(name) {
-      this.$router.push({name: name})
+      this.pushRouteTo({name: name})
     }
   },
   computed: {

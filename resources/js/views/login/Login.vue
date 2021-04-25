@@ -73,7 +73,7 @@ export default {
   methods: {
     ...mapActions('auth', ['login']),
     redirect(name) {
-      this.$router.push({name: name})
+      this.pushRouteTo({name: name})
     },
     performLogin() {
       this.isLoading = true;

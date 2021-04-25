@@ -89,7 +89,7 @@ export default {
       return name.toUpperCase();
     },
     redirect(name) {
-      this.$router.push({name: name});
+      this.pushRouteTo({name: name});
     },
     performLogout() {
       this.logout();
