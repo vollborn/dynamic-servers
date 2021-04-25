@@ -16,6 +16,7 @@ class ServerStatisticController extends Controller
     {
         $statistics = $server->statistics()
             ->whereDate('counting_at', '>', today()->subDays(30))
+            ->orderBy('counting_at')
             ->get();
 
         return [
