@@ -77,6 +77,11 @@
     "customization": {
       "title": "Customization",
       "save": "Save"
+    },
+    "delete": {
+      "title": "Delete Server",
+      "pre_name": "Do you really want to delete the server \"",
+      "post_name": "\"?"
     }
   },
   "dialogs": {
@@ -99,6 +104,10 @@
       "notifications": {
         "header": "Notifications"
       }
+    },
+    "confirm": {
+      "confirm": "Confirm",
+      "cancel": "Cancel"
     }
   },
   "notification_channel": {

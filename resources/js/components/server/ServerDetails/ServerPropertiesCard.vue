@@ -1,8 +1,15 @@
 <template>
   <v-card>
     <v-card-title>
-      <server-status-icon :server="server" class="mr-3"/>
-      {{ server.name }}
+      <v-row no-gutters>
+        <v-col cols="6" class="d-flex align-center">
+          <server-status-icon :server="server" class="mr-3"/>
+          {{ server.name }}
+        </v-col>
+        <v-col cols="6" class="d-flex justify-end">
+          <server-delete-button :server="server"/>
+        </v-col>
+      </v-row>
     </v-card-title>
     <v-divider/>
     <v-card-text class="my-2">
@@ -60,9 +67,14 @@
           {{ $t('server.properties.dialogs.server_token') }}
         </v-col>
         <v-col cols="6" class="d-flex">
-          {{ getPreview(server.serverToken, 20, true) }}
+          <span class="d-none d-lg-block">
+            {{ getPreview(server.serverToken, 20, true) }}
+          </span>
+          <span class="d-block d-lg-none">
+            {{ getPreview(server.serverToken, 10, true) }}
+          </span>
           <v-spacer/>
-          <server-token-dialog :server="server" />
+          <server-token-dialog :server="server"/>
         </v-col>
         <v-col cols="6">
           {{ $t('server.properties.dialogs.request_token') }}
@@ -70,7 +82,7 @@
         <v-col cols="6" class="d-flex">
           {{ getPreview(server.requestToken, 10, true) }}
           <v-spacer/>
-          <request-token-dialog :server="server" />
+          <request-token-dialog :server="server"/>
         </v-col>
       </v-row>
     </v-card-text>
@@ -81,9 +93,10 @@
 import ServerStatusIcon from "../parts/ServerStatusIcon";
 import ServerTokenDialog from "./ServerTokenDialog";
 import RequestTokenDialog from "./RequestTokenDialog";
+import ServerDeleteButton from "../parts/ServerDeleteButton";
 
 export default {
-  components: {RequestTokenDialog, ServerTokenDialog, ServerStatusIcon},
+  components: {ServerDeleteButton, RequestTokenDialog, ServerTokenDialog, ServerStatusIcon},
   props: {
     server: {
       type: Object,
