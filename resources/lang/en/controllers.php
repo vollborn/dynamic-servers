@@ -32,8 +32,9 @@ return [
     ],
 
     'notification_channel' => [
-        'stored'  => 'Notification channel created.',
-        'deleted' => 'Notification channel deleted.',
+        'stored'        => 'Notification channel created.',
+        'limit_reached' => 'Notification channel limit reached.',
+        'deleted'       => 'Notification channel deleted.',
     ]
 
 ];

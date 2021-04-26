@@ -1,7 +1,7 @@
 <script>
 export default {
   methods: {
-    getLabel(id) {
+    getNotificationChannelLabel(id) {
       switch (id) {
         case 1:
           return this.$t('mixins.notification_channels.discord')

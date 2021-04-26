@@ -19,19 +19,20 @@ class ServerResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'id'               => $this->id,
-            'name'             => $this->name,
-            'ipAddress'        => $this->ip_address,
-            'ipAddressDetails' => $this->decodeJson($this->ip_address_details),
-            'serverToken'      => $this->server_token,
-            'requestToken'     => $this->request_token,
-            'customLabels'     => $this->decodeJson($this->custom_labels) ?? $this->getDefaultLabels(),
-            'requestInterval'  => $this->request_interval,
-            'lastSeenAt'       => $this->last_seen_at,
-            'lastUpdatedAt'    => $this->last_updated_at,
-            'createdAt'        => $this->created_at,
-            'updatedAt'        => $this->updated_at,
-            'disabledAt'       => $this->disabled_at,
+            'id'                       => $this->id,
+            'name'                     => $this->name,
+            'notificationChannelLimit' => $this->notification_channel_limit,
+            'ipAddress'                => $this->ip_address,
+            'ipAddressDetails'         => $this->decodeJson($this->ip_address_details),
+            'serverToken'              => $this->server_token,
+            'requestToken'             => $this->request_token,
+            'customLabels'             => $this->decodeJson($this->custom_labels) ?? $this->getDefaultLabels(),
+            'requestInterval'          => $this->request_interval,
+            'lastSeenAt'               => $this->last_seen_at,
+            'lastUpdatedAt'            => $this->last_updated_at,
+            'createdAt'                => $this->created_at,
+            'updatedAt'                => $this->updated_at,
+            'disabledAt'               => $this->disabled_at,
 
             'isAvailable' => $this->getAvailability(),
 

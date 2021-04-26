@@ -111,9 +111,15 @@
     }
   },
   "notification_channel": {
+    "edit": {
+      "header": "Server Notifications",
+      "close": "Close",
+      "limit_reached": "You have reached the notification channel limit."
+    },
     "form": {
       "add": "Add",
       "empty": "Add some notification channels, if you want to get automatically notified about ip address changes!",
+      "limit_reached": "You have reached the notification channel limit. You can create more later in the server overview.",
       "labels": {
         "default": "Content",
         "email_content": "Address",

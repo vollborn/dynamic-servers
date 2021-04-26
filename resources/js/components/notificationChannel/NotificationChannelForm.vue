@@ -1,28 +1,20 @@
 <template>
   <v-row>
-    <v-col cols="12" sm="3">
-      <notification-channel-select v-model="notificationChannel.notificationChannelTypeId"/>
-    </v-col>
-    <v-col cols="12" sm="7">
-      <v-text-field
-        v-model="notificationChannel.content"
-        :label="channelContentLabel"
+    <v-col cols="12">
+      <notification-channel-add-form
+        v-if="canAddNotificationChannels"
+        @submit="submit"
       />
-    </v-col>
-    <v-col cols="12" sm="2">
-      <v-btn
-        class="mt-3"
-        @click="submit"
-        color="primary"
-        :disabled="!canSubmit"
-        block
+      <div
+        v-else
+        class="text-center mb-4 mt-3"
       >
-        {{ $t('notification_channel.form.add') }}
-      </v-btn>
+        {{ $t('notification_channel.form.limit_reached') }}
+      </div>
     </v-col>
     <v-col cols="12">
       <div
-        v-if="notificationChannels.length === 0"
+        v-if="canAddNotificationChannels && notificationChannels.length === 0"
         class="text-center mb-4"
       >
         {{ $t('notification_channel.form.empty') }}
@@ -43,7 +35,7 @@
           <tbody>
           <tr v-for="(channel, index) in notificationChannels" :key="index">
             <td>
-              {{ getLabel(channel.notificationChannelTypeId) }}
+              {{ getNotificationChannelLabel(channel.notificationChannelTypeId) }}
             </td>
             <td>
               {{ getPreview(channel.content, 50, true) }}
@@ -66,12 +58,10 @@
 </template>
 
 <script>
-import NotificationChannelSelect from "./NotificationChannelSelect";
-import NotificationChannels from "../../mixins/NotificationChannels";
+import NotificationChannelAddForm from "./NotificationChannelAddForm";
 
 export default {
-  components: {NotificationChannelSelect},
-  mixins: [NotificationChannels],
+  components: {NotificationChannelAddForm},
   props: {
     value: {
       type: Array,
@@ -81,27 +71,12 @@ export default {
   },
   data() {
     return {
-      notificationChannel: {
-        notificationChannelTypeId: null,
-        content: null
-      },
       notificationChannels: this.value,
     }
   },
   computed: {
-    channelContentLabel() {
-      switch (this.notificationChannel.notificationChannelTypeId) {
-        case 1:
-          return this.$t('notification_channel.form.labels.discord_content');
-        case 2:
-          return this.$t('notification_channel.form.labels.email_content');
-        default:
-          return this.$t('notification_channel.form.labels.default');
-      }
-    },
-    canSubmit() {
-      return this.notificationChannel.notificationChannelTypeId
-        && this.notificationChannel.content
+    canAddNotificationChannels() {
+      return this.notificationChannels.length < process.env.MIX_SERVER_NOTIFICATION_CHANNEL_LIMIT
     }
   },
   watch: {
@@ -119,15 +94,8 @@ export default {
     }
   },
   methods: {
-    clear() {
-      this.notificationChannel = {
-        notificationChannelTypeId: null,
-        content: null
-      }
-    },
-    submit() {
-      this.notificationChannels.push(this.notificationChannel);
-      this.clear();
+    submit(data) {
+      this.notificationChannels.push(data);
     },
     removeChannel(index) {
       this.notificationChannels.splice(index, 1);

@@ -9,6 +9,7 @@ use App\Rules\NotificationChannelType;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class ServerNotificationChannelController extends Controller
 {
@@ -32,6 +33,10 @@ class ServerNotificationChannelController extends Controller
             'notificationChannelTypeId' => ['required', new NotificationChannelType],
             'content'                   => 'required|string'
         ]);
+
+        if ($server->notificationChannels()->count() >= $server->notification_channel_limit) {
+            return $this->json(__('controllers.notification_channel.limit_reached'), Response::HTTP_CONFLICT);
+        }
 
         try {
             $server->notificationChannels()->create([

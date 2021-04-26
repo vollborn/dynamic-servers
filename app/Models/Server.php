@@ -22,6 +22,7 @@ class Server extends Model
 
     protected $fillable = [
         'user_id',
+        'notification_channel_limit',
         'name',
         'ip_address',
         'ip_address_details',

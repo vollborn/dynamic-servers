@@ -7,6 +7,9 @@
           {{ server.name }}
         </v-col>
         <v-col cols="6" class="d-flex justify-end">
+          <div class="mr-1">
+            <server-notification-channels-button :server="server"/>
+          </div>
           <server-delete-button :server="server"/>
         </v-col>
       </v-row>
@@ -94,9 +97,13 @@ import ServerStatusIcon from "../parts/ServerStatusIcon";
 import ServerTokenDialog from "./ServerTokenDialog";
 import RequestTokenDialog from "./RequestTokenDialog";
 import ServerDeleteButton from "../parts/ServerDeleteButton";
+import ServerNotificationChannelsButton from "../NotificationChannels/ServerNotificationChannelsButton";
 
 export default {
-  components: {ServerDeleteButton, RequestTokenDialog, ServerTokenDialog, ServerStatusIcon},
+  components: {
+    ServerNotificationChannelsButton,
+    ServerDeleteButton, RequestTokenDialog, ServerTokenDialog, ServerStatusIcon
+  },
   props: {
     server: {
       type: Object,

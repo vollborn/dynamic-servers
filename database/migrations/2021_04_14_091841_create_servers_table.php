@@ -15,6 +15,8 @@ class CreateServersTable extends Migration
     {
         Schema::create('servers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('notification_channel_limit')
+                ->default(config('servers.notification_channel_limit'));
 
             $table->foreignId('user_id');
             $table->string('name');

@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'limit' => 10,
+    'limit'                      => 10,
+    'notification_channel_limit' => 10,
 
     'server_token_length'  => 80,
     'request_token_length' => 24,

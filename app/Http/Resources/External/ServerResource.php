@@ -23,7 +23,7 @@ class ServerResource extends JsonResource
             'name'             => $this->name,
             'ipAddress'        => $this->ip_address,
             'ipAddressDetails' => $this->decodeJson($this->ip_address_details),
-            'customLabels'     => $this->decodeJson($this->custom_labels),
+            'customLabels'     => $this->decodeJson($this->custom_labels) ?? [],
             'lastSeenAt'       => $this->last_seen_at,
             'lastUpdatedAt'    => $this->last_updated_at,
 

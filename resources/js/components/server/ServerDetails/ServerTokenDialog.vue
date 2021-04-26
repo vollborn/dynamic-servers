@@ -108,7 +108,7 @@ export default {
   },
   methods: {
     getScriptURL() {
-      return 'curl '
+      return 'curl -X POST '
         + process.env.MIX_APP_URL
         + '/api/status/'
         + this.server.id

@@ -12,12 +12,14 @@ import store from './plugins/store';
 import router from './plugins/router';
 import i18n from './plugins/i18n';
 import App from './App.vue';
+import NotificationChannels from "./mixins/NotificationChannels";
 
 let app = null;
 
 Vue.mixin(Dates);
 Vue.mixin(Preview);
 Vue.mixin(PushRoute);
+Vue.mixin(NotificationChannels);
 
 Chartkick.options = {
   colors: [

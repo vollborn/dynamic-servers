@@ -31,7 +31,13 @@ class NotificationChannels implements Rule
             return true;
         }
 
-        if (!array_filter(array_keys($decoded), 'is_int')) {
+        $keys = array_keys($decoded);
+
+        if (count($keys) > env('MIX_SERVER_NOTIFICATION_CHANNEL_LIMIT')) {
+            return false;
+        }
+
+        if (!array_filter($keys, 'is_int')) {
             return false;
         }
 
