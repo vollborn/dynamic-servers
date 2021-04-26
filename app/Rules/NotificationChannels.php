@@ -2,12 +2,16 @@
 
 namespace App\Rules;
 
+use App\Models\NotificationChannel;
+use App\Traits\Notifications\ValidateNotificationChannelContent;
 use Exception;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Arr;
 
 class NotificationChannels implements Rule
 {
+    use ValidateNotificationChannelContent;
+
     /**
      * Determine if the validation rule passes.
      *
@@ -43,6 +47,14 @@ class NotificationChannels implements Rule
 
         foreach ($decoded as $channel) {
             if (!Arr::has($channel, ['notificationChannelTypeId', 'content'])) {
+                return false;
+            }
+
+            if (!in_array($channel['notificationChannelTypeId'], NotificationChannel::getAvailable(), true)) {
+                return false;
+            }
+
+            if (!$this->validateNotificationChannelContent($channel['notificationChannelTypeId'], $channel['content'])) {
                 return false;
             }
         }

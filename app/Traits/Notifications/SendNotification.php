@@ -12,10 +12,6 @@ trait SendNotification
      */
     protected function sendNotifications(Server $server)
     {
-        if (env('APP_ENV') === 'local') {
-            return;
-        }
-
         $notificationChannels = $server->notificationChannels()->get();
         foreach ($notificationChannels as $notificationChannel) {
             $notificationChannel->notify(new StatusNotification($server));

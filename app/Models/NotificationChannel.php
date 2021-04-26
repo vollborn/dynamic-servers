@@ -27,10 +27,7 @@ class NotificationChannel extends Model
      */
     public static function getAvailable(): array
     {
-        return [
-            self::DISCORD,
-            self::EMAIL
-        ];
+        return config('notifications.enabled');
     }
 
     /**

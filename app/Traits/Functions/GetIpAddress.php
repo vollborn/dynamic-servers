@@ -28,10 +28,6 @@ trait GetIpAddress
      */
     protected function getIpAddressDetails(string $ip): ?string
     {
-        if (env('APP_ENV') === 'local') {
-            return null;
-        }
-
         $client = new Client(['headers' => ['Accept' => 'application/json']]);
         try {
             $response = $client->request('GET', 'https://ipinfo.io/' . $ip);

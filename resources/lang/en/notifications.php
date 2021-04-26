@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'store' => [
+        'invalid_channel_content' => 'The channel content is not valid.'
+    ],
+
     'discord' => [
         'name' => 'Discord',
 
