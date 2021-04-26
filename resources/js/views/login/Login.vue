@@ -23,10 +23,22 @@
           />
           <v-text-field
             v-model="password"
-            type="password"
+            :type="showPassword ? 'text' : 'password'"
             :label="$t('login.labels.password')"
             class="mb-2"
-          />
+          >
+            <template #append>
+              <div
+                style="width: 20px; padding-left: 15px; padding-right: 15px"
+                @click="showPassword = !showPassword"
+                class="d-flex justify-center align-center cursor-pointer"
+              >
+                <v-icon size="18">
+                  {{ showPassword ? 'fa-eye-slash' : 'fa-eye' }}
+                </v-icon>
+              </div>
+            </template>
+          </v-text-field>
         </v-card-text>
         <v-divider/>
         <v-card-actions>
