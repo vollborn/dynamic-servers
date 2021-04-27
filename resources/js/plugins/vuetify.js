@@ -15,7 +15,9 @@ export default new Vuetify({
         accent: '#fc045c',
         active: '#00d43e',
         inactive: '#ff472b',
-        disabled: '#5a5a5a'
+        disabled: '#5a5a5a',
+
+        vuetifyCardBackground: '#1e1e1e'
       }
     }
   },

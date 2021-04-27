@@ -141,5 +141,21 @@
     "title": "Oops!",
     "subtitle": "Something went wrong.",
     "text": " Please check your entered url. Maybe it is just a spelling mistake?"
+  },
+  "dashboard": {
+    "welcome_pre": "Welcome, ",
+    "welcome_post": "!",
+    "cards": {
+      "server_limit": {
+        "title": "Server Limit",
+        "maximum_pre": "Maximum: ",
+        "maximum_post": "",
+        "servers": "Servers"
+      },
+      "total_requests": {
+        "title": "Total Requests",
+        "subtitle": "in this month"
+      }
+    }
   }
 }

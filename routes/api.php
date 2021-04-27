@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\BackgroundImage\BackgroundImageController;
+use App\Http\Controllers\Api\Dashboard\DashboardController;
 use App\Http\Controllers\Api\NotificationChannelType\NotificationChannelTypeController;
 use App\Http\Controllers\Api\ServerNotificationChannel\ServerNotificationChannelController;
 use App\Http\Controllers\Api\Profile\ProfileController;
@@ -36,6 +37,13 @@ Route::group(['middleware' => 'auth:api'], static function () {
     Route::group(['prefix' => 'auth'], static function () {
         Route::get('', [AuthController::class, 'getAuth']);
         Route::post('logout', [AuthController::class, 'logout']);
+    });
+
+    /*
+     * Dashboard
+     */
+    Route::group(['prefix' => 'dashboard'], static function () {
+       Route::get('total-requests-chart', [DashboardController::class, 'totalRequestsChart']);
     });
 
     /*
