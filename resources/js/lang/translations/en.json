@@ -155,6 +155,20 @@
       "total_requests": {
         "title": "Total Requests",
         "subtitle": "in this month"
+      },
+      "support": {
+        "title": "Support",
+        "subtitle": "Need any help?",
+        "line1": "Do you need any help in setting up your server?",
+        "line2": "Check out the support page!",
+        "button": "Support"
+      },
+      "source": {
+        "title": "GitHub",
+        "subtitle": "Host it yourself too!",
+        "line1": "Interested in the source code?",
+        "line2": "Check out the GitHub page!",
+        "button": "GitHub"
       }
     }
   }
