@@ -11,6 +11,7 @@
     />
   </div>
 </template>
+
 <script>
 import NavigationBar from "./NavigationBar";
 import NavigationDrawer from "./NavigationDrawer";

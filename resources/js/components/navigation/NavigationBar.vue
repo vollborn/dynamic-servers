@@ -4,11 +4,13 @@
     app
     color="header"
     elevation="2"
+    :style="'background: ' + background + '; color: ' + color"
   >
     <v-app-bar-nav-icon
       v-if="isAuth && !slimInterface"
       class="mr-2"
       @click="toggle"
+      color="navigationColor"
     />
 
     <div
@@ -43,6 +45,7 @@
       <v-btn
         class="mr-2"
         text
+        color="navigationColor"
         @click="redirect('login')"
       >
         {{ $t('navigation.labels.login') }}
@@ -82,6 +85,12 @@ export default {
   computed: {
     ...mapGetters('auth', ['isAuth', 'user']),
     ...mapGetters('server', ['servers', 'loadingServers']),
+    background() {
+      return this.$vuetify.theme.currentTheme.navigationBackground;
+    },
+    color() {
+      return this.$vuetify.theme.currentTheme.navigationColor;
+    },
     showAddServerButton() {
       return !this.loadingServers && this.servers.length < this.user.serverLimit;
     }

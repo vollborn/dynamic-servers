@@ -13,7 +13,7 @@
         class="mr-0 ml-3"
         @click="isOpen = !isOpen"
       >
-        <v-icon>
+        <v-icon color="navigationColor">
           fa-user
         </v-icon>
       </v-btn>
