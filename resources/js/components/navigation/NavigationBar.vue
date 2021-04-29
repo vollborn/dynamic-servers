@@ -4,7 +4,7 @@
     app
     color="header"
     elevation="2"
-    :style="'background: ' + background + '; color: ' + color"
+    :style="getToolbarStyle()"
   >
     <v-app-bar-nav-icon
       v-if="isAuth && !slimInterface"
@@ -64,9 +64,11 @@
 import ServerCreateButton from "../server/ServerCreate/ServerCreateButton";
 import NavigationProfileButton from "./NavigationProfileButton";
 import {mapGetters} from "vuex";
+import Toolbar from "../../mixins/Toolbar";
 
 export default {
   components: {NavigationProfileButton, ServerCreateButton},
+  mixins: [Toolbar],
   props: {
     slimInterface: {
       type: Boolean,
@@ -85,12 +87,6 @@ export default {
   computed: {
     ...mapGetters('auth', ['isAuth', 'user']),
     ...mapGetters('server', ['servers', 'loadingServers']),
-    background() {
-      return this.$vuetify.theme.currentTheme.navigationBackground;
-    },
-    color() {
-      return this.$vuetify.theme.currentTheme.navigationColor;
-    },
     showAddServerButton() {
       return !this.loadingServers && this.servers.length < this.user.serverLimit;
     }

@@ -103,7 +103,7 @@ export default {
 
   .server-limit-label {
     transform: rotate(-216.5deg);
-    background: #000;
+    background: #0000;
     width: calc(100% - 44px);
     height: calc(100% - 44px);
     border-radius: 50%;

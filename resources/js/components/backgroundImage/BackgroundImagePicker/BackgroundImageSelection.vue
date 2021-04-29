@@ -1,6 +1,7 @@
 <template>
   <v-card tile>
     <v-toolbar
+      :style="getToolbarStyle()"
       tile
       class="px-2"
     >
@@ -39,8 +40,10 @@
 
 <script>
 import {mapGetters} from "vuex";
+import Toolbar from "../../../mixins/Toolbar";
 
 export default {
+  mixins: [Toolbar],
   props: {
     value: {
       type: Number,

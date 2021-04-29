@@ -1,6 +1,7 @@
 <template>
   <v-card tile>
     <v-toolbar
+      :style="getToolbarStyle()"
       tile
       class="px-2"
     >
@@ -113,9 +114,11 @@
 
 <script>
 import NotificationChannelAddForm from "../../notificationChannel/NotificationChannelAddForm";
+import Toolbar from "../../../mixins/Toolbar";
 
 export default {
   components: {NotificationChannelAddForm},
+  mixins: [Toolbar],
   props: {
     server: {
       type: Object,

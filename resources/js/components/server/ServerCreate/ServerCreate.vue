@@ -3,6 +3,7 @@
     <v-toolbar
       tile
       class="px-2"
+      :style="getToolbarStyle()"
     >
       <v-toolbar-title>{{ $t('dialogs.server_create.title') }}</v-toolbar-title>
       <v-spacer/>
@@ -64,9 +65,11 @@ import CustomizationCard from "./parts/CustomizationCard";
 import GeneralInfoCard from "./parts/GeneralInfoCard";
 import NotificationCard from "./parts/NotificationCard";
 import {mapActions} from "vuex";
+import Toolbar from "../../../mixins/Toolbar";
 
 export default {
   components: {NotificationCard, GeneralInfoCard, CustomizationCard},
+  mixins: [Toolbar],
   data() {
     return {
       isLoading: false,
