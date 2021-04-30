@@ -67,7 +67,10 @@
         "server_token": "Server Token",
         "request_token": "Request Token",
         "curl_script": "cURL Script",
-        "access_url": "Access URL"
+        "cron_label": "Cronjob Entry",
+        "access_url": "Access URL",
+        "server_token_description_pre": "You need to call the route every ",
+        "server_token_description_post": " seconds."
       }
     },
     "charts": {

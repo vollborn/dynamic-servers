@@ -32,12 +32,12 @@
           </v-col>
           <v-col cols="1" class="d-flex align-center justify-center">
             <v-btn
-              @click="copyToken"
+              @click="copy(tokenId)"
               class="mt-2"
               icon
             >
               <v-icon>
-                {{ hasCopiedToken ? 'fa-clipboard-check' : 'fa-clipboard' }}
+                fa-clipboard
               </v-icon>
             </v-btn>
           </v-col>
@@ -53,14 +53,39 @@
           </v-col>
           <v-col cols="1" class="d-flex align-center justify-center">
             <v-btn
-              @click="copyScript"
+              @click="copy(scriptId)"
               class="mt-2"
               icon
             >
               <v-icon>
-                {{ hasCopiedScript ? 'fa-clipboard-check' : 'fa-clipboard' }}
+                fa-clipboard
               </v-icon>
             </v-btn>
+          </v-col>
+          <v-col cols="11">
+            <v-text-field
+              :id="cronId"
+              :label="$t('server.properties.dialogs.cron_label')"
+              v-model="cron"
+              readonly
+              hide-details
+            />
+          </v-col>
+          <v-col cols="1" class="d-flex align-center justify-center">
+            <v-btn
+              @click="copy(cronId)"
+              class="mt-2"
+              icon
+            >
+              <v-icon>
+                fa-clipboard
+              </v-icon>
+            </v-btn>
+          </v-col>
+          <v-col cols="12">
+            {{ $t('server.properties.dialogs.server_token_description_pre') }}
+            {{ getRequestTimeout() }}
+            {{ $t('server.properties.dialogs.server_token_description_post') }}
           </v-col>
         </v-row>
       </v-card-text>
@@ -92,18 +117,10 @@ export default {
     return {
       dialog: false,
       script: this.getScriptURL(),
-      hasCopiedToken: false,
-      hasCopiedScript: false,
+      cron: this.getCronjob(),
       tokenId: 'server-token-dialog--token-' + Math.floor(Math.random() * 1000),
-      scriptId: 'server-token-dialog--script-' + Math.floor(Math.random() * 1000)
-    }
-  },
-  watch: {
-    dialog(value) {
-      if (!value) {
-        this.hasCopiedToken = false;
-        this.hasCopiedScript = false;
-      }
+      scriptId: 'server-token-dialog--script-' + Math.floor(Math.random() * 1000),
+      cronId: 'server-token-dialog--cron-' + Math.floor(Math.random() * 1000)
     }
   },
   methods: {
@@ -115,19 +132,26 @@ export default {
         + '/'
         + this.server.serverToken;
     },
-    copyToken() {
-      let textField = document.getElementById(this.tokenId);
+    copy(id) {
+      let textField = document.getElementById(id);
       textField.select();
-      textField.setSelectionRange(0, this.server.serverToken.length);
+      textField.setSelectionRange(0, textField.value.length);
       document.execCommand('copy');
-      this.hasCopiedToken = true;
     },
-    copyScript() {
-      let textField = document.getElementById(this.scriptId);
-      textField.select();
-      textField.setSelectionRange(0, this.script.length);
-      document.execCommand('copy');
-      this.hasCopiedScript = true;
+    getRequestTimeout() {
+      return this.server.requestInterval / 1000 - 1;
+    },
+    getCronjob() {
+      let timeout = this.getRequestTimeout();
+      let counter = 300 / timeout;
+
+      if (counter > Math.floor(counter)) {
+        counter = Math.floor(counter);
+      } else {
+        counter--;
+      }
+
+      return '*/5 * * * * counter=' + counter + '; while [[ $counter > 0 ]]; do ' + this.getScriptURL() + '; counter=$(($counter-1)); sleep ' + timeout + 's; done';
     }
   }
 }
