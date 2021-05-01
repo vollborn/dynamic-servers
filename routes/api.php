@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\BackgroundImage\BackgroundImageController;
 use App\Http\Controllers\Api\Dashboard\DashboardController;
 use App\Http\Controllers\Api\NotificationChannelType\NotificationChannelTypeController;
+use App\Http\Controllers\Api\Question\QuestionController;
 use App\Http\Controllers\Api\ServerNotificationChannel\ServerNotificationChannelController;
 use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Server\ServerController;
@@ -43,7 +44,7 @@ Route::group(['middleware' => 'auth:api'], static function () {
      * Dashboard
      */
     Route::group(['prefix' => 'dashboard'], static function () {
-       Route::get('total-requests-chart', [DashboardController::class, 'totalRequestsChart']);
+        Route::get('total-requests-chart', [DashboardController::class, 'totalRequestsChart']);
     });
 
     /*
@@ -96,5 +97,14 @@ Route::group(['middleware' => 'auth:api'], static function () {
      */
     Route::group(['prefix' => 'background-images'], static function () {
         Route::get('', [BackgroundImageController::class, 'index']);
+    });
+
+    /*
+     * Questions
+     */
+    Route::group(['prefix' => 'questions'], static function () {
+        Route::get('', [QuestionController::class, 'index']);
+        Route::get('own', [QuestionController::class, 'own']);
+        Route::post('', [QuestionController::class, 'store']);
     });
 });

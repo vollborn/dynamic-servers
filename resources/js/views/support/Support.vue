@@ -11,84 +11,62 @@
             v-model="search"
             :label="$t('support.search')"
             append-icon="fa-search"
+            hide-details
           />
+        </div>
+        <div class="text-center mt-4">
+          <v-btn
+            @click="switchPage"
+            color="primary"
+          >
+            <v-icon small class="mr-2">{{ leftIcon }}</v-icon>
+            {{ buttonLabel }}
+            <v-icon small class="ml-2">{{ rightIcon }}</v-icon>
+          </v-btn>
         </div>
       </v-col>
       <v-col cols="12" lg="8" offset-lg="2">
-        <div
-          class="text-center text-body-2 mt-4"
-          v-if="!filteredQuestions.length"
-        >
-          {{ $t('support.no_results') }}
-        </div>
-        <div v-else>
-          <v-expansion-panels
-            v-for="(question, index) in filteredQuestions"
-            :key="index"
-            :class="index > 0 ? 'mt-2' : ''"
-          >
-            <v-expansion-panel>
-              <v-expansion-panel-header>
-                {{ question.question }}
-              </v-expansion-panel-header>
-              <v-expansion-panel-content class="text-body-2">
-                {{ question.answer }}
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </div>
+        <all-questions-column
+          v-if="page === 'all'"
+          :search="search"
+          class="mt-6"
+        />
+        <own-questions-column
+          v-if="page === 'own'"
+          :search="search"
+          class="mt-6"
+        />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import {cloneDeep} from "lodash";
+import AllQuestionsColumn from "../../components/support/AllQuestionsColumn";
+import OwnQuestionsColumn from "../../components/support/OwnQuestionsColumn";
 
 export default {
+  components: {OwnQuestionsColumn, AllQuestionsColumn},
   data() {
     return {
       search: null,
-      filteredQuestions: [],
-      questions: [
-        {
-          question: 'Test Question 1',
-          answer: 'This is the answer!'
-        },
-        {
-          question: 'Test Question 2',
-          answer: 'This is the answer 2!'
-        }
-      ],
+      page: 'all'
     }
   },
-  created() {
-    this.applySearch()
-  },
-  watch: {
-    search() {
-      this.applySearch();
+  computed: {
+    leftIcon() {
+      return this.page === 'own' ? 'fa-arrow-left' : null;
+    },
+    rightIcon() {
+      return this.page === 'all' ? 'fa-arrow-right' : null;
+    },
+    buttonLabel() {
+      return this.page === 'all' ? this.$t('support.my_questions') : this.$t('support.all_questions')
     }
   },
   methods: {
-    applySearch() {
-      if (!this.search) {
-        this.filteredQuestions = cloneDeep(this.questions);
-        return;
-      }
-
-      let exploded = this.search.split(' ');
-      this.filteredQuestions = this.questions.filter(item => {
-        for (let index in exploded) {
-          if (
-            exploded.hasOwnProperty(index)
-            && !item.question.toUpperCase().includes(exploded[index].toUpperCase())
-          ) {
-            return false;
-          }
-        }
-        return true;
-      });
+    switchPage() {
+      this.page = this.page === 'all' ? 'own' : 'all';
     }
   }
 }

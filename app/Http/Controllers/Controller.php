@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Log;
 
@@ -44,5 +45,20 @@ class Controller extends BaseController
         return response()->json([
             'message' => $message ?? __('controllers.base.exception')
         ], $code);
+    }
+
+    /**
+     * @param $query
+     * @param int $page
+     * @param int $perPage
+     * @return LengthAwarePaginator
+     */
+    protected function paginate(
+        $query,
+        int $page,
+        int $perPage = 20
+    ): LengthAwarePaginator
+    {
+        return $query->paginate($perPage, '*', 'page', $page);
     }
 }

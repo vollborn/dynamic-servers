@@ -178,6 +178,18 @@
   "support": {
     "heading": "How can we help you?",
     "search": "Search",
-    "no_results": "Sorry. We could not find what you were looking for..."
+    "no_results": "Sorry. We could not find what you were looking for...",
+    "no_own_questions": "You have not submitted any questions.",
+    "my_questions": "My questions",
+    "all_questions": "All questions",
+    "load_more": "Load More",
+    "question_panel": {
+      "created_at": "Created",
+      "updated_at": "Updated"
+    },
+    "question_create": {
+      "label": "Question",
+      "submit": "Submit"
+    }
   }
 }
