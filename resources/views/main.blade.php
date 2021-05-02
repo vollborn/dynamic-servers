@@ -6,6 +6,7 @@
 
 <title>{{ env('APP_NAME') }}</title>
 <link rel="stylesheet" href="/css/app.css" />
+<link rel="icon" type="image/png" href="favicon.png" sizes="128x128">
 </head>
 <body>
 <div id="app">
