@@ -1,7 +1,5 @@
 # Dynamic Servers
 
----
-
 ## About
 
 **Dynamic Servers** is a web service to manage the IP addresses of small and private game servers with dynamic addresses.
@@ -24,17 +22,19 @@ Your players can look up your gameservers IP via a direct link, or read it from 
 
 Of course, you can host **Dynamic Servers** by yourself too, if you want to.
 
-1. **Clone the repository to your webserver.**
+<br />
+
+1. Clone the repository to your webserver.
 ```
 git clone https://github.com/vollborn/dynamic-servers
 ```
 
-2. **Install composer**
+2. Install composer
 ```
 composer install
 ```
 
-3. **Build the front end**
+3. Build the front end
 
 Yarn:
 ```
@@ -47,14 +47,15 @@ npm install && npm run production
 ```
 
 
-4. **Copy .env.example to .env and edit the entries as needed**
+4. Copy .env.example to .env and edit the entries as needed
 
 
-5. **Migrate and seed**
+5. Migrate and seed
 ```
 php artisan migrate --seed
 ```
 
-6. **Direct your requests to the /public directory**
+6. Direct your requests to the /public directory
 
+<br />
 Here we go! **Dynamic Servers** should be up and running!
