@@ -191,5 +191,32 @@
       "label": "Question",
       "submit": "Submit"
     }
+  },
+  "settings": {
+    "profile": {
+      "header": "Profile",
+      "personal_information": "Personal Information",
+      "username": "Username",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "change_password": "Change Password",
+      "new_password": "New Password",
+      "repeat_password": "Repeat Password"
+    },
+    "preferences": {
+      "header": "Preferences",
+      "appearance": "Appearance",
+      "theme": "Theme",
+      "themes": {
+        "dark": "Dark",
+        "light": "Light"
+      },
+      "language": "Language",
+      "Locale": "Locale",
+      "locales": {
+        "en": "English",
+        "de": "German"
+      }
+    }
   }
 }

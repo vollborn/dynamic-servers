@@ -9,18 +9,8 @@ use Illuminate\Support\Arr;
 trait ValidateSettings
 {
     use DecodeJson,
-        EncodeJson;
-
-    private array $settingsFields = [
-        'theme'  => [
-            'light',
-            'dark'
-        ],
-        'locale' => [
-            'en',
-            'de'
-        ]
-    ];
+        EncodeJson,
+        DefaultSettings;
 
     /**
      * @param string $json
@@ -40,15 +30,16 @@ trait ValidateSettings
     protected function validateSettings(array $settings, bool $shouldReturnJson = false)
     {
         $return = [];
+        $settingsFields = $this->getSettingsFields();
 
-        if (!Arr::has($settings, array_keys($this->settingsFields))) {
-            foreach ($this->settingsFields as $key => $allowed) {
+        if (!Arr::has($settings, array_keys($settingsFields))) {
+            foreach ($settingsFields as $key => $allowed) {
                 $return[$key] = $allowed[0];
             }
             return $return;
         }
 
-        foreach ($this->settingsFields as $key => $allowed) {
+        foreach ($settingsFields as $key => $allowed) {
             if (in_array($settings[$key], $allowed)) {
                 $return[$key] = $settings[$key];
             } else {

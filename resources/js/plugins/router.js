@@ -46,6 +46,12 @@ const routes = [
     name: 'server',
     component: () => import('./../views/server/Server.vue'),
     meta: {auth: true}
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    component: () => import('./../views/settings/Settings.vue'),
+    meta: {auth: true}
   }
 ];
 

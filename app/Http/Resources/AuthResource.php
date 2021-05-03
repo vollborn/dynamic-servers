@@ -3,11 +3,13 @@
 namespace App\Http\Resources;
 
 use App\Traits\Functions\DecodeJson;
+use App\Traits\User\DefaultSettings;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AuthResource extends JsonResource
 {
-    use DecodeJson;
+    use DecodeJson,
+        DefaultSettings;
 
     /**
      * Transform the resource into an array.
@@ -22,7 +24,7 @@ class AuthResource extends JsonResource
             'firstName'   => $this->first_name,
             'lastName'    => $this->last_name,
             'username'    => $this->username,
-            'settings'    => $this->decodeJson($this->settings),
+            'settings'    => $this->decodeJson($this->settings) ?? $this->getDefaultSettings(),
             'apiToken'    => $this->api_token,
             'serverLimit' => $this->server_limit,
             'createdAt'   => $this->created_at,

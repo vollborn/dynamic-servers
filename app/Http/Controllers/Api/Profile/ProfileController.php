@@ -39,7 +39,7 @@ class ProfileController extends Controller
         $user->last_name = $data['lastName'];
         $user->settings = $this->validateSettingsJson($data['settings'], true);
 
-        if (Arr::has($data, 'password')) {
+        if (Arr::has($data, 'password') && $data['password']) {
             $user->password = Hash::make($data['password']);
         }
 
