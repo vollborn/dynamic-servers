@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="user">
     <v-row>
       <v-col cols="12">
         <div class="text-lg-h4 text-h6 mt-4 mb-2 mx-4">
