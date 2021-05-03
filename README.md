@@ -11,12 +11,16 @@ You can be notified via following channels:
 - Discord
 - Slack
 
+<br />
+
 ## How does it work
 
 Your gameserver sends a simple HTTP request once in a while to the **Dynamic Servers** host.
 The host will notice when your IP address changes, and proceeds to send a notification to your configured channels.
 
 Your players can look up your gameservers IP via a direct link, or read it from the notification, if configured.
+
+<br />
 
 ## Setup
 
@@ -58,4 +62,5 @@ php artisan migrate --seed
 6. Direct your requests to the /public directory
 
 <br />
+
 Here we go! **Dynamic Servers** should be up and running!
