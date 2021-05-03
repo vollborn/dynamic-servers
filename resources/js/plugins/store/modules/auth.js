@@ -76,9 +76,8 @@ const actions = {
           reject(error);
         })
         .finally(() => {
-          commit('UNSET_AUTH');
           router.push({name: 'login'});
-          window.location.reload();
+          commit('UNSET_AUTH');
         });
     });
   },
