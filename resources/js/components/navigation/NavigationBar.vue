@@ -31,15 +31,12 @@
     <v-spacer/>
 
     <div
-      v-if="isAuth">
-      <div
-        v-if="!slimInterface"
-        class="d-flex align-center"
-      >
-        <server-create-button v-if="showAddServerButton"/>
-        <v-divider vertical v-if="showAddServerButton"/>
-        <navigation-profile-button/>
-      </div>
+      v-if="isAuth"
+      class="d-flex align-center"
+    >
+      <server-create-button v-if="showAddServerButton"/>
+      <v-divider vertical v-if="showAddServerButton"/>
+      <navigation-profile-button/>
     </div>
     <div v-else>
       <v-btn
@@ -88,7 +85,9 @@ export default {
     ...mapGetters('auth', ['isAuth', 'user']),
     ...mapGetters('server', ['servers', 'loadingServers']),
     showAddServerButton() {
-      return !this.loadingServers && this.servers.length < this.user.serverLimit;
+      return !this.loadingServers
+        && !this.slimInterface
+        && this.servers.length < this.user.serverLimit;
     }
   }
 }
