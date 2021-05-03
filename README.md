@@ -7,18 +7,17 @@
 It automatically notifies you and your users about the (mostly) daily change of your servers IP address.
 You can be notified via following channels:
 
-- E-Mail
+- Mail
 - Discord
-- Slack
 
 <br />
 
-## How does it work
+## How it works
 
 Your gameserver sends a simple HTTP request once in a while to the **Dynamic Servers** host.
 The host will notice when your IP address changes, and proceeds to send a notification to your configured channels.
 
-Your players can look up your gameservers IP via a direct link, or read it from the notification, if configured.
+Your players will be able to look up your gameservers IP via direct link, or copy it from the notification, if configured.
 
 <br />
 
@@ -28,7 +27,7 @@ Of course, you can host **Dynamic Servers** by yourself too, if you want to.
 
 <br />
 
-1. Clone the repository to your webserver.
+1. Clone the repository to your webserver
 ```
 git clone https://github.com/vollborn/dynamic-servers
 ```
