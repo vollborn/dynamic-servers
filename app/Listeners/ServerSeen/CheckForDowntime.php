@@ -1,42 +1,50 @@
 <?php
 
-namespace App\Traits\Server;
+namespace App\Listeners\ServerSeen;
 
-use App\Models\Server;
+use App\Events\ServerSeen;
 use App\Traits\Statistic\GetOrCreateStatistic;
-use Carbon\Carbon;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-trait CheckForDowntime
+class CheckForDowntime implements ShouldQueue
 {
     use GetOrCreateStatistic;
 
-    protected function checkForDowntime(Server $server)
+    /**
+     * Handle the event.
+     *
+     * @param  ServerSeen  $event
+     * @return void
+     */
+    public function handle(ServerSeen $event)
     {
-        $lastSeen = Carbon::parse($server->last_seen_at);
+        $server = $event->getServer();
+        $lastSeen = $event->getLastSeenAt();
+        $now = $event->getNow();
 
-        $timeDiff = now()->diffInSeconds($lastSeen);
+        $timeDiff = $now->diffInSeconds($lastSeen);
         if ($timeDiff <= $server->request_interval / 1000) {
             return;
         }
 
         if (today()->toDateString() === $lastSeen->toDateString()) {
 
-            $statistic = $this->getOrCreateStatistic($server, now());
+            $statistic = $this->getOrCreateStatistic($server, $now);
             $statistic->downtime += $timeDiff;
             $statistic->save();
 
         } else {
 
             $afterFirstDay = $lastSeen->copy()->addDay()->startOfDay();
-            $beforeLastDay = today()->subDay()->endOfDay();
+            $beforeLastDay = $now->copy()->subDay()->endOfDay();
 
             $firstDay = $this->getOrCreateStatistic($server, $lastSeen);
             $firstDay->downtime += $lastSeen->diffInSeconds($afterFirstDay);
             $firstDay->save();
 
-            if (today()->toDateString() !== $afterFirstDay->toDateString()) {
+            if ($now->copy()->toDateString() !== $afterFirstDay->toDateString()) {
                 $iterateDate = $afterFirstDay->copy();
-                while (today()->isAfter($iterateDate)) {
+                while ($now->isAfter($iterateDate)) {
                     $statistic = $this->getOrCreateStatistic($server, $iterateDate);
                     $statistic->downtime = 86400;
                     $statistic->save();
@@ -44,8 +52,8 @@ trait CheckForDowntime
                 }
             }
 
-            $lastDay = $this->getOrCreateStatistic($server, today());
-            $lastDay->downtime += now()->diffInSeconds($beforeLastDay);
+            $lastDay = $this->getOrCreateStatistic($server, $now);
+            $lastDay->downtime += $now->diffInSeconds($beforeLastDay);
             $lastDay->save();
         }
     }
