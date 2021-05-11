@@ -1,7 +1,7 @@
 <template>
   <div class="home-title">
     <div class="wrapper">
-      <div class="text-h2 text-sm-h1">
+      <div class="text-h2 text-sm-h1 white--text">
         Dynamic Servers
       </div>
       <v-btn

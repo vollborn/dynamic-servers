@@ -9,7 +9,12 @@ let config = {
   baseURL: process.env.MIX_API_URL,
   headers: {
     'Content-Type': 'application/json',
-    Accept: 'application/json',
+    'Accept': 'application/json',
+    'Accept-Language': {
+      toString() {
+        return store.getters['locale/locale'];
+      }
+    },
     Authorization: {
       toString() {
         return `Bearer ${store.getters['auth/apiToken']}`;

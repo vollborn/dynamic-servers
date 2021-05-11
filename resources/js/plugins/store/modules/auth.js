@@ -1,5 +1,5 @@
 import router from "../../router";
-import i18n from "../../i18n";
+import store from "../../store";
 
 const state = {
   isAuth: !!localStorage.getItem('isAuth'),
@@ -23,7 +23,7 @@ const mutations = {
     localStorage.setItem('apiToken', apiToken);
   },
   SET_USER(state, user) {
-    i18n.locale = user.settings.locale ?? 'en';
+    store.commit('locale/SET_LOCALE', user.settings.locale ?? 'en')
     state.user = user;
   },
   UNSET_AUTH(state) {
@@ -36,7 +36,7 @@ const mutations = {
 };
 
 const actions = {
-  register({ commit, dispatch }, registerForm) {
+  register({commit, dispatch}, registerForm) {
     return new Promise((resolve, reject) => {
       window.axios
         .post('auth/register', registerForm)
@@ -51,7 +51,7 @@ const actions = {
         });
     });
   },
-  login({ commit, dispatch }, loginForm) {
+  login({commit, dispatch}, loginForm) {
     return new Promise((resolve, reject) => {
       window.axios
         .post('auth/login', loginForm)
@@ -67,7 +67,7 @@ const actions = {
         });
     });
   },
-  logout({ commit }) {
+  logout({commit}) {
     return new Promise((resolve, reject) => {
       window.axios
         .post('auth/logout')
@@ -83,7 +83,7 @@ const actions = {
         });
     });
   },
-  getAuth({ commit }) {
+  getAuth({commit}) {
     return new Promise((resolve, reject) => {
       window.axios
         .get('auth')

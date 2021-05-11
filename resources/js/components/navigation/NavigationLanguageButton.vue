@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
   data() {
     return {
@@ -25,6 +27,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions('locale', ['setLocale']),
     getNextLocaleIndex() {
       let index = this.locales.indexOf(this.locale) + 1;
       if (index === this.locales.length) {
@@ -35,8 +38,7 @@ export default {
     toNextLocale() {
       this.locale = this.nextLocale;
       this.nextLocale = this.locales[this.getNextLocaleIndex()];
-
-      this.$i18n.locale = this.locale;
+      this.setLocale(this.locale);
     }
   }
 }
