@@ -10,11 +10,11 @@
       </v-col>
       <v-col cols="12" md="6">
         <v-container class="image-container">
-          <v-img src="/assets/background.jpg" class="rounded-lg rounded-br-xl rounded-tl-xl"/>
+          <v-img src="/assets/home/image1.jpg" class="rounded-lg rounded-br-xl rounded-tl-xl"/>
         </v-container>
       </v-col>
     </v-row>
-    <v-row class="flex-md-row-reverse mt-12">
+    <v-row class="flex-md-row-reverse mt-14">
       <v-col cols="12" md="6">
         <div class="text-h4">
           {{ $t('home.about_rows.how_it_works.title') }}
@@ -24,7 +24,7 @@
       </v-col>
       <v-col cols="12" md="6">
         <v-container class="image-container">
-          <v-img src="/assets/background.jpg" class="rounded-lg rounded-br-xl rounded-tl-xl"/>
+          <v-img src="/assets/home/image2.jpg" class="rounded-lg rounded-br-xl rounded-tl-xl"/>
         </v-container>
       </v-col>
     </v-row>

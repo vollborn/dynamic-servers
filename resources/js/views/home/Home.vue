@@ -3,7 +3,7 @@
     <home-title/>
     <v-container fluid class="pa-0 px-8 home-container">
       <info-cards/>
-      <about-rows class="mt-12"/>
+      <about-rows class="mt-14"/>
     </v-container>
     <try-it-image class="mt-14"/>
     <home-footer/>
