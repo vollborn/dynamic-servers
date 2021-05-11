@@ -38,22 +38,13 @@
       <v-divider vertical v-if="showAddServerButton"/>
       <navigation-profile-button/>
     </div>
-    <div v-else>
-      <navigation-language-button class="mr-1" />
-      <v-btn
-        class="mr-2"
-        text
-        color="navigationColor"
-        @click="redirect('login')"
-      >
-        {{ $t('navigation.labels.login') }}
-      </v-btn>
-      <v-btn
-        color="primary"
-        @click="redirect('register')"
-      >
-        {{ $t('navigation.labels.register') }}
-      </v-btn>
+    <div
+      class="d-flex align-center mr-md-2"
+      v-else
+    >
+      <navigation-language-button />
+      <navigation-login-button class="ml-2 mr-3" />
+      <navigation-register-button />
     </div>
   </v-app-bar>
 </template>
@@ -64,9 +55,13 @@ import NavigationProfileButton from "./NavigationProfileButton";
 import {mapGetters} from "vuex";
 import Toolbar from "../../mixins/Toolbar";
 import NavigationLanguageButton from "./NavigationLanguageButton";
+import NavigationLoginButton from "./NavigationLoginButton";
+import NavigationRegisterButton from "./NavigationRegisterButton";
 
 export default {
-  components: {NavigationLanguageButton, NavigationProfileButton, ServerCreateButton},
+  components: {
+    NavigationRegisterButton,
+    NavigationLoginButton, NavigationLanguageButton, NavigationProfileButton, ServerCreateButton},
   mixins: [Toolbar],
   props: {
     slimInterface: {

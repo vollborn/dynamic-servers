@@ -13,7 +13,7 @@ export default {
       return this.$vuetify.theme.currentTheme.navigationColor;
     },
     getToolbarIndex() {
-      return 100;
+      return 5;
     }
   }
 }

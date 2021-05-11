@@ -1,13 +1,24 @@
 <template>
-  <v-btn
-    fab
-    class="elevation-0"
-    @click="toNextLocale"
-  >
-    <div class="flag-container">
-      <img :src="flagUrl" alt=""/>
-    </div>
-  </v-btn>
+  <div>
+    <v-btn
+      icon
+      class="d-block d-md-none"
+      @click="toNextLocale"
+    >
+      <div class="flag-container">
+        <img :src="flagUrl" alt=""/>
+      </div>
+    </v-btn>
+    <v-btn
+      fab
+      class="d-none d-md-block elevation-0"
+      @click="toNextLocale"
+    >
+      <div class="flag-container">
+        <img :src="flagUrl" alt=""/>
+      </div>
+    </v-btn>
+  </div>
 </template>
 
 <script>

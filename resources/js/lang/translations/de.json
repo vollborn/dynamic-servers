@@ -8,7 +8,7 @@
   },
   "navigation": {
     "labels": {
-      "login": "Login",
+      "login": "Anmelden",
       "register": "Registrieren",
       "create_server": "Server erstellen"
     },

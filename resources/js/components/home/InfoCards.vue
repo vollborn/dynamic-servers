@@ -88,7 +88,7 @@
   .cards-container {
     width: 100%;
     margin-top: -30px;
-    z-index: 10;
+    z-index: 4;
 
     .card-item {
       max-width: 600px;
