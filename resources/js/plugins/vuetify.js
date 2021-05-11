@@ -19,7 +19,9 @@ export default new Vuetify({
         navigationBackground: '#272727',
         navigationColor: '#fff',
 
-        vuetifyCardBackground: '#fff'
+        vuetifyCardBackground: '#fff',
+
+        iconGray: '#ccc'
       },
       dark: {
         primary: '#fc045c',
@@ -32,7 +34,9 @@ export default new Vuetify({
         navigationBackground: '#272727',
         navigationColor: '#fff',
 
-        vuetifyCardBackground: '#1e1e1e'
+        vuetifyCardBackground: '#1e1e1e',
+
+        iconGray: '#bbb'
       }
     }
   },

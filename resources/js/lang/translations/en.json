@@ -218,5 +218,40 @@
         "de": "German"
       }
     }
+  },
+  "home": {
+    "register_now": "Register now",
+    "info_cards": {
+      "free": {
+        "title": "Free.",
+        "description": "Dynamic Servers is a free software.\nNo cost. No ads."
+      },
+      "open_source": {
+        "title": "Open Source.",
+        "description": "Dynamic Servers is a open source.\nCheck it out on GitHub!"
+      },
+      "private": {
+        "title": "Private.",
+        "description": "Your privacy is important to me.\nNo third party trackers. No logs."
+      }
+    },
+    "about_rows": {
+      "what_it_is": {
+        "title": "What it is",
+        "description": "Dynamic Servers is a free and open source tool for owners of private game servers.\n\nPrivate households usually have dynamic IP addresses, which means that the address changes every day. For players who want to join the server via this address, they have to know the new address every day.\n\nAnd that's what Dynamic Servers is for."
+      },
+      "how_it_works": {
+        "title": "How it works",
+        "description": "The game server sends a request to Dynamic Servers every few seconds. There it is checked whether there has been a change to the IP address, if necessary it is updated and a message is sent out on the configured channels.\n\nThe users can then find out what the new IP address is via the web interface or a Discord message."
+      }
+    },
+    "try_it": {
+      "title": "Try it.",
+      "description": "It is free. You can always change your mind."
+    },
+    "footer": {
+      "imprint": "Imprint",
+      "privacy_notice": "Privacy Notice"
+    }
   }
 }
