@@ -39,6 +39,7 @@
       <navigation-profile-button/>
     </div>
     <div v-else>
+      <navigation-language-button class="mr-1" />
       <v-btn
         class="mr-2"
         text
@@ -62,9 +63,10 @@ import ServerCreateButton from "../server/ServerCreate/ServerCreateButton";
 import NavigationProfileButton from "./NavigationProfileButton";
 import {mapGetters} from "vuex";
 import Toolbar from "../../mixins/Toolbar";
+import NavigationLanguageButton from "./NavigationLanguageButton";
 
 export default {
-  components: {NavigationProfileButton, ServerCreateButton},
+  components: {NavigationLanguageButton, NavigationProfileButton, ServerCreateButton},
   mixins: [Toolbar],
   props: {
     slimInterface: {

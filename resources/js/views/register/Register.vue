@@ -125,7 +125,8 @@ export default {
         firstName: this.firstName,
         lastName: this.lastName,
         username: this.username,
-        password: this.password
+        password: this.password,
+        locale: this.$i18n.locale
       };
 
       this.register(params)

@@ -5,17 +5,18 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthResource;
 use App\Models\User;
+use App\Traits\User\DefaultSettings;
 use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
+    use DefaultSettings;
+
     /**
      * @return JsonResponse
      */
@@ -25,7 +26,8 @@ class AuthController extends Controller
             'firstName' => 'required|string',
             'lastName'  => 'required|string',
             'username'  => 'required|string',
-            'password'  => 'required|string'
+            'password'  => 'required|string',
+            'locale'    => 'required|string'
         ]);
 
         if (User::where('username', $data['username'])->exists()) {
@@ -33,11 +35,16 @@ class AuthController extends Controller
         }
 
         try {
+            $defaultSettings = $this->getDefaultSettings();
+            $defaultSettings['locale'] = $data['locale'];
+            $settings = json_encode($defaultSettings, JSON_THROW_ON_ERROR);
+
             User::create([
                 'first_name' => $data['firstName'],
                 'last_name'  => $data['lastName'],
                 'username'   => $data['username'],
-                'password'   => Hash::make($data['password'])
+                'password'   => Hash::make($data['password']),
+                'settings'   => $settings
             ]);
         } catch (Exception $exception) {
             return $this->exception($exception);

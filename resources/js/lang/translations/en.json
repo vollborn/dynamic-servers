@@ -216,7 +216,9 @@
         "en": "English",
         "de": "German"
       }
-    }
+    },
+    "reset": "Reset",
+    "save_and_reload": "Save & Reload"
   },
   "home": {
     "register_now": "Register now",

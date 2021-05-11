@@ -216,7 +216,9 @@
         "en": "Englisch",
         "de": "Deutsch"
       }
-    }
+    },
+    "reset": "Zurücksetzen",
+    "save_and_reload": "Speichern & Neu laden"
   },
   "home": {
     "register_now": "Jetzt registrieren",

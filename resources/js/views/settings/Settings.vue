@@ -12,7 +12,7 @@
           @click="reset"
           :disabled="!hasChanges"
         >
-          Reset
+          {{ $t('settings.reset') }}
         </v-btn>
         <v-spacer/>
         <v-btn
@@ -21,7 +21,7 @@
           :loading="isLoading"
           color="primary"
         >
-          Save & Reload
+          {{ $t('settings.save_and_reload') }}
         </v-btn>
       </v-col>
     </v-row>
@@ -64,6 +64,10 @@ export default {
         && this.hasChanges
     },
     hasChanges() {
+      if (!this.user) {
+        return false;
+      }
+
       return this.profile.firstName !== this.user.firstName
         || this.profile.lastName !== this.user.lastName
         || JSON.stringify(this.profile.settings) !== JSON.stringify(this.user.settings)

@@ -1,4 +1,5 @@
 import router from "../../router";
+import i18n from "../../i18n";
 
 const state = {
   isAuth: !!localStorage.getItem('isAuth'),
@@ -22,6 +23,7 @@ const mutations = {
     localStorage.setItem('apiToken', apiToken);
   },
   SET_USER(state, user) {
+    i18n.locale = user.settings.locale ?? 'en';
     state.user = user;
   },
   UNSET_AUTH(state) {
