@@ -1,6 +1,6 @@
 <template>
   <div class="try-it-image">
-    <v-card class="py-8 px-md-12 text-center">
+    <v-card class="py-8 px-md-12 text-center vue-animations size-fade-in">
       <div class="text-h2">
         {{ $t('home.try_it.title') }}
       </div>

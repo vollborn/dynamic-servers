@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <v-row>
+    <v-row class="vue-animations fade-in">
       <v-col cols="12" md="6">
         <div class="text-h4">
           {{ $t('home.about_rows.what_it_is.title') }}
@@ -14,7 +14,7 @@
         </v-container>
       </v-col>
     </v-row>
-    <v-row class="flex-md-row-reverse mt-14">
+    <v-row class="flex-md-row-reverse mt-14 vue-animations fade-in">
       <v-col cols="12" md="6">
         <div class="text-h4">
           {{ $t('home.about_rows.how_it_works.title') }}

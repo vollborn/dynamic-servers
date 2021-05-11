@@ -6451,6 +6451,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
+vue-animations@vollborn/vue-animations:
+  version "0.0.1"
+  resolved "https://codeload.github.com/vollborn/vue-animations/tar.gz/fde111861cfc901c6d03e0f575d05aebbb522cd1"
+
 vue-chartkick@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/vue-chartkick/-/vue-chartkick-0.6.1.tgz#e48044b8b74160fb39a47a2278c37d73511f9357"
