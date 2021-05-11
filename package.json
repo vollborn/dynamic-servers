@@ -23,7 +23,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
-        "chart.js": "2.9.3",
+        "chart.js": "2.9.4",
         "dayjs": "^1.10.4",
         "vue": "^2.6.12",
         "vue-chartkick": "0.6.1",
