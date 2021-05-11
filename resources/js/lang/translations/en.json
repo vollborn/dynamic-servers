@@ -1,5 +1,4 @@
 {
-  "test": "test-en",
   "mixins": {
     "notification_channels": {
       "default": "Unknown",
@@ -228,7 +227,7 @@
       },
       "open_source": {
         "title": "Open Source.",
-        "description": "Dynamic Servers is a open source.\nCheck it out on GitHub!"
+        "description": "Dynamic Servers is open source.\nCheck it out on GitHub!"
       },
       "private": {
         "title": "Private.",

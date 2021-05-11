@@ -1,3 +1,256 @@
 {
-  "test": "test-de"
+  "mixins": {
+    "notification_channels": {
+      "default": "Unbekannt",
+      "email": "E-Mail",
+      "discord": "Discord"
+    }
+  },
+  "navigation": {
+    "labels": {
+      "login": "Login",
+      "register": "Registrieren",
+      "create_server": "Server erstellen"
+    },
+    "drawer": {
+      "overview": "Übersicht",
+      "dashboard": "Dashboard",
+      "support": "Support",
+      "servers": "Server",
+      "no_servers": "Du hast noch keine\nServer!"
+    },
+    "profile": {
+      "settings": "Einstellungen",
+      "logout": "Ausloggen"
+    }
+  },
+  "login": {
+    "labels": {
+      "username": "Benutzername",
+      "password": "Passwort",
+      "register": "Registrieren",
+      "login": "Anmelden"
+    }
+  },
+  "register": {
+    "labels": {
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "username": "Benutzername",
+      "password": "Passwort",
+      "accept_terms": "Ich akzeptiere die weitere Verarbeitung meiner Daten, damit dieser Dienst bereitgestellt werden kann.",
+      "register": "Registrieren"
+    },
+    "states": {
+      "empty": "Bitte gib zuerst einen Benutzernamen an",
+      "loading": "Lädt...",
+      "success": "Dieser Benutzername ist verfügbar",
+      "error": "Dieser Benutzername ist vergeben"
+    }
+  },
+  "server": {
+    "customization_form": {
+      "title": "Titel",
+      "subtitle": "Untertitel",
+      "text": "Beschreibung"
+    },
+    "properties": {
+      "server_name": "Servername",
+      "server_id": "Server ID",
+      "ip_address": "IP Adresse",
+      "last_seen_at": "Zuletzt gesehen am",
+      "created_at": "Erstellt am",
+      "updated_at": "Bearbeitet am",
+      "dialogs": {
+        "close": "Schließen",
+        "server_token": "Servertoken",
+        "request_token": "Zugriffstoken",
+        "curl_script": "cURL Script",
+        "cron_label": "Cronjob Eintrag",
+        "access_url": "Zugriffs-URL",
+        "server_token_description_pre": "Die Route muss alle ",
+        "server_token_description_post": " Sekunden aufgerufen werden."
+      }
+    },
+    "charts": {
+      "requests": "Anfragen",
+      "downtime": "Downtime"
+    },
+    "customization": {
+      "title": "Personalisierung",
+      "save": "Speichern"
+    },
+    "delete": {
+      "title": "Server löschen",
+      "pre_name": "Möchtest du den Server \"",
+      "post_name": "\" wirklich löschen?"
+    }
+  },
+  "dialogs": {
+    "server_create": {
+      "title": "Server erstellen",
+      "actions": {
+        "reset": "Zurücksetzen",
+        "create": "Server erstellen"
+      },
+      "general": {
+        "header": "Generelle Informationen",
+        "server_name": "Servername",
+        "server_name_hint": "Der Servername ist für jeden mit Zugriffstoken sichtbar.",
+        "request_interval": "Anfrageinterval",
+        "request_interval_hint": "Das Anfrageinterval ist der Abstand zwischen den IP-Aktualisierungsanfragen."
+      },
+      "customization": {
+        "header": "Personalisierung"
+      },
+      "notifications": {
+        "header": "Benachrichtigungen"
+      }
+    },
+    "confirm": {
+      "confirm": "Bestätigen",
+      "cancel": "Abbrechen"
+    }
+  },
+  "notification_channel": {
+    "edit": {
+      "header": "Benachrichtigungen",
+      "close": "Schließen",
+      "limit_reached": "Du hast das Kanallimit erreicht."
+    },
+    "form": {
+      "add": "Hinzufügen",
+      "empty": "Füge ein paar Kanäle hinzu, um automatisch über IP-Adressänderungen informiert zu werden!",
+      "limit_reached": "Du hast das Kanallimit erreicht. Du kannst später in der Serverübersicht mehr erstellen.",
+      "labels": {
+        "default": "Inhalt",
+        "email_content": "Adresse",
+        "discord_content": "Webhook URL"
+      },
+      "headers": {
+        "channel": "Kanal",
+        "content": "Inhalt"
+      }
+    }
+  },
+  "background_image": {
+    "picker": {
+      "header": "Wähle einen Hintergrund",
+      "select": "Hintergrund auswählen"
+    }
+  },
+  "status": {
+    "title": "Hoppla!",
+    "subtitle": "Etwas ist schief gelaufen.",
+    "text": "Bitte überprüfe die eingegebene URL. Vielleicht ist es nur ein Schreibfehler?"
+  },
+  "dashboard": {
+    "welcome_pre": "Willkommen, ",
+    "welcome_post": "!",
+    "cards": {
+      "server_limit": {
+        "title": "Serverlimit",
+        "maximum_pre": "Maximum: ",
+        "maximum_post": "",
+        "servers": "Server"
+      },
+      "total_requests": {
+        "title": "Anfragen insgesamt",
+        "subtitle": "in diesem Monat"
+      },
+      "support": {
+        "title": "Support",
+        "subtitle": "Hilfe gefällig?",
+        "line1": "Brauchst du Hilfe beim Einstellen eines Servers?",
+        "line2": "Schau auf der Support-Seite vorbei!",
+        "button": "Support"
+      },
+      "source": {
+        "title": "GitHub",
+        "subtitle": "Dynamic Servers ist Open Source!",
+        "line1": "Interesse am Quellcode?",
+        "line2": "Besuch doch das GitHub-Repository!",
+        "button": "GitHub"
+      }
+    }
+  },
+  "support": {
+    "heading": "Wie kann ich dir helfen?",
+    "search": "Suche",
+    "no_results": "Tut mir leid. Ich konnte nicht finden, wonach du suchst...",
+    "no_own_questions": "Du hast noch keine Fragen eingereicht.",
+    "my_questions": "Meine Fragen",
+    "all_questions": "Alle Fragen",
+    "load_more": "Mehr laden",
+    "question_panel": {
+      "created_at": "Erstellt am",
+      "updated_at": "Bearbeitet am"
+    },
+    "question_create": {
+      "label": "Frage",
+      "submit": "Senden"
+    }
+  },
+  "settings": {
+    "profile": {
+      "header": "Profil",
+      "personal_information": "Persönliche Informationen",
+      "username": "Benutzername",
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "change_password": "Passwort ändern",
+      "new_password": "Neues Passwort",
+      "repeat_password": "Passwort wiederholen"
+    },
+    "preferences": {
+      "header": "Einstellungen",
+      "appearance": "Design",
+      "theme": "Darstellung",
+      "themes": {
+        "dark": "Dunkel",
+        "light": "Hell"
+      },
+      "language": "Sprache",
+      "Locale": "Sprache",
+      "locales": {
+        "en": "Englisch",
+        "de": "Deutsch"
+      }
+    }
+  },
+  "home": {
+    "register_now": "Jetzt registrieren",
+    "info_cards": {
+      "free": {
+        "title": "Kostenlos.",
+        "description": "Dynamic Servers ist gratis.\nKeine Kosten. Keine Werbung."
+      },
+      "open_source": {
+        "title": "Open Source.",
+        "description": "Dynamic Servers ist Open Source.\nSchau doch auf GitHub vorbei!"
+      },
+      "private": {
+        "title": "Privat.",
+        "description": "Deine Privatsphäre ist mir wichtig.\nKeine externen Tracker. Keine Logs."
+      }
+    },
+    "about_rows": {
+      "what_it_is": {
+        "title": "Über den Dienst",
+        "description": "Dynamic Servers ist ein kostenloses Open Source-Werkzeug für Besitzer privater Gameserver.\n\nPrivate Haushalte haben für gewöhnlich dynamische IP-Adressen, welche sich jeden Tag ändern. Spieler, die dem Server über diese Adresse beitreten möchten, müssen jeden Tag die neue Adresse kennen.\n\nUnd genau dafür gibt es Dynamic Servers."
+      },
+      "how_it_works": {
+        "title": "Wie es funktioniert",
+        "description": "Der Gameserver sendet alle paar Sekunden eine Anfrage an Dynamic Servers. Dort wird überprüft, ob sich die IP-Adresse geändert hat, und wird bei Bedarf aktualisiert. Danach werden die konfigurierten Kanäle benachrichtigt.\n\nDie Benutzer können über die Weboberfläche oder eine Discord-Nachricht herausfinden, wie die neue IP-Adresse lautet."
+      }
+    },
+    "try_it": {
+      "title": "Probier's aus.",
+      "description": "Es ist vollkommen kostenlos. Warum also nicht?"
+    },
+    "footer": {
+      "imprint": "Impressum",
+      "privacy_notice": "Datenschutzerklärung"
+    }
+  }
 }
