@@ -25,7 +25,10 @@ export default {
   },
   computed: {
     slimInterface() {
-      return this.$route.name === 'status' || this.$route.name === 'home';
+      return this.$route.name === 'status'
+        || this.$route.name === 'home'
+        || this.$route.name === 'too-many-requests'
+        || this.$route.name === 'not-found';
     }
   },
   methods: {

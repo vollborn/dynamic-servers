@@ -260,6 +260,9 @@
   "errors": {
     "404": {
       "description": "Die angeforderte Resource konnte nicht gefunden werden."
+    },
+    "429": {
+      "description": "Nicht so schnell... Warte kurz. Du überlastest noch den Server :/"
     }
   }
 }

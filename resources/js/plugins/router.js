@@ -68,6 +68,12 @@ const routes = [
 
   // Errors
   {
+    path: '/too-many-requests',
+    name: 'too-many-requests',
+    component: () => import('./../views/too-many-requests/TooManyRequests.vue'),
+    meta: {auth: false}
+  },
+  {
     path: '*',
     name: 'not-found',
     component: () => import('./../views/not-found/NotFound.vue'),

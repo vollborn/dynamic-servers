@@ -50,6 +50,8 @@ axios.interceptors.response.use(
         return router.push({name: 'login'});
       case 404:
         return router.push({name: 'not-found'});
+      case 429:
+        return router.push({name: 'too-many-requests'});
     }
     return Promise.reject(error);
   }
