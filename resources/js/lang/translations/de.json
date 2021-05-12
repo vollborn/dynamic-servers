@@ -264,5 +264,8 @@
     "429": {
       "description": "Nicht so schnell... Warte kurz. Du überlastest noch den Server :/"
     }
+  },
+  "cookies": {
+    "banner": "Diese Webseite verwendet Cookies."
   }
 }

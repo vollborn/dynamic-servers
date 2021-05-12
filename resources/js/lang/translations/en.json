@@ -264,5 +264,8 @@
     "429": {
       "description": "Slow it down a bit. You issued to many requests :/"
     }
+  },
+  "cookies": {
+    "banner": "This website uses cookies."
   }
 }

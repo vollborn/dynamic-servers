@@ -14,6 +14,7 @@ import TheNavigation from './components/navigation/Navigation';
 import Notifications from "./components/global/Notifications";
 import Confirm from "./components/global/Confirm";
 import Theme from "./mixins/Theme";
+import Cookies from "./mixins/Cookies";
 
 export default {
   components: {
@@ -21,10 +22,12 @@ export default {
     Notifications,
     Confirm
   },
-  mixins: [Theme],
+  mixins: [Theme, Cookies],
   mounted() {
     this.$root.$notification = this.$refs.notification;
     this.$root.$confirm = this.$refs.confirm;
+
+    this.checkCookies();
   }
 }
 </script>
