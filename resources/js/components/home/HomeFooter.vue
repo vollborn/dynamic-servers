@@ -3,12 +3,14 @@
     <div class="d-flex justify-center">
       <v-btn
         class="mx-1"
+        @click="pushRouteTo({name: 'legal-notice'})"
         text
       >
-        {{ $t('home.footer.imprint') }}
+        {{ $t('home.footer.legal_notice') }}
       </v-btn>
       <v-btn
         class="mx-1"
+        @click="pushRouteTo({name: 'privacy-notice'})"
         text
       >
         {{ $t('home.footer.privacy_notice') }}

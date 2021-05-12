@@ -253,8 +253,13 @@
       "description": "It is free. You can always change your mind."
     },
     "footer": {
-      "imprint": "Imprint",
+      "legal_notice": "Legal Notice",
       "privacy_notice": "Privacy Notice"
+    }
+  },
+  "errors": {
+    "404": {
+      "description": "The requested resource could not be found."
     }
   }
 }

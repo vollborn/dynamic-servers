@@ -52,6 +52,26 @@ const routes = [
     name: 'settings',
     component: () => import('./../views/settings/Settings.vue'),
     meta: {auth: true}
+  },
+
+  // Static
+  {
+    path: '/legal-notice',
+    name: 'legal-notice',
+    component: () => import('./../views/legal-notice/LegalNotice.vue')
+  },
+  {
+    path: '/privacy-notice',
+    name: 'privacy-notice',
+    component: () => import('./../views/privacy-notice/PrivacyNotice.vue')
+  },
+
+  // Errors
+  {
+    path: '*',
+    name: 'not-found',
+    component: () => import('./../views/not-found/NotFound.vue'),
+    meta: {auth: false}
   }
 ];
 

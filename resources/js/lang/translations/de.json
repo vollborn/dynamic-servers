@@ -253,8 +253,13 @@
       "description": "Es ist vollkommen kostenlos. Warum also nicht?"
     },
     "footer": {
-      "imprint": "Impressum",
+      "legal_notice": "Impressum",
       "privacy_notice": "Datenschutzerklärung"
+    }
+  },
+  "errors": {
+    "404": {
+      "description": "Die angeforderte Resource konnte nicht gefunden werden."
     }
   }
 }
