@@ -43,7 +43,7 @@
       v-else
     >
       <navigation-language-button />
-      <navigation-login-button class="ml-2 mr-3" />
+      <navigation-login-button class="mx-1 ml-md-2 mr-md-3" />
       <navigation-register-button />
     </div>
   </v-app-bar>

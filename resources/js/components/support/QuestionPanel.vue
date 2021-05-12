@@ -2,7 +2,15 @@
   <v-expansion-panels class="mt-2">
     <v-expansion-panel :disabled="!question.answer">
       <v-expansion-panel-header>
-        {{ question.question }}
+        <span>
+          <span v-if="!question.answer" class="primary--text">
+            {{ $t('support.question_panel.no_answer') }}
+          </span>
+          <span v-if="!question.answer" class="mx-1">
+            •
+          </span>
+          {{ question.question }}
+        </span>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <div class="text-body-2 text-pre-line">{{ question.answer }}</div>

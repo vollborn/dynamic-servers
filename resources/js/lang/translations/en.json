@@ -142,7 +142,8 @@
   "status": {
     "title": "Oops!",
     "subtitle": "Something went wrong.",
-    "text": " Please check your entered url. Maybe it is just a spelling mistake?"
+    "text": "Please check your entered url. Maybe it is just a spelling mistake?",
+    "ip_address_empty": "No IP address."
   },
   "dashboard": {
     "welcome_pre": "Welcome, ",
@@ -183,6 +184,7 @@
     "all_questions": "All questions",
     "load_more": "Load More",
     "question_panel": {
+      "no_answer": "Not answered",
       "created_at": "Created",
       "updated_at": "Updated"
     },

@@ -142,7 +142,8 @@
   "status": {
     "title": "Hoppla!",
     "subtitle": "Etwas ist schief gelaufen.",
-    "text": "Bitte überprüfe die eingegebene URL. Vielleicht ist es nur ein Schreibfehler?"
+    "text": "Bitte überprüfe die eingegebene URL. Vielleicht ist es nur ein Schreibfehler?",
+    "ip_address_empty": "Keine IP-Adresse."
   },
   "dashboard": {
     "welcome_pre": "Willkommen, ",
@@ -183,6 +184,7 @@
     "all_questions": "Alle Fragen",
     "load_more": "Mehr laden",
     "question_panel": {
+      "no_answer": "Unbeantwortet",
       "created_at": "Erstellt am",
       "updated_at": "Bearbeitet am"
     },

@@ -62,7 +62,7 @@
       <v-divider/>
       <v-card-text>
         <div class="text-center text-body-1">
-          {{ server.ipAddress }}
+          {{ server.ipAddress ? server.ipAddress : $t('status.ip_address_empty') }}
         </div>
       </v-card-text>
       <div v-if="server.customLabels.text ">
