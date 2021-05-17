@@ -58,7 +58,25 @@ npm install && npm run production
 php artisan migrate --seed
 ```
 
-6. Direct your requests to the /public directory
+6. Put your legal and privacy notices in the corresponding blade files
+
+Legal notice views:
+```
+./resources/views/legal
+```
+
+Privacy notice views:
+```
+./resources/views/privacy
+```
+
+7. Direct your requests to the /public directory
+
+
+8. Start your queue workers if configured in your .env file
+```
+php artisan queue:work
+```
 
 <br />
 
