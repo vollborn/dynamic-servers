@@ -3,7 +3,8 @@ export default {
   methods: {
     pushRouteTo(route) {
       this.$router.push(route).catch(() => {
-        // such emptiness
+        // Scroll to top anyways
+        window.scrollTo(0, 0);
       });
     }
   }

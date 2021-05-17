@@ -2,7 +2,7 @@
   "mixins": {
     "notification_channels": {
       "default": "Unknown",
-      "email": "E-Mail",
+      "email": "Mail",
       "discord": "Discord"
     }
   },

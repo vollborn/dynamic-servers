@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\BackgroundImage\BackgroundImageController;
 use App\Http\Controllers\Api\Dashboard\DashboardController;
+use App\Http\Controllers\Api\Legal\LegalController;
 use App\Http\Controllers\Api\NotificationChannelType\NotificationChannelTypeController;
 use App\Http\Controllers\Api\Question\QuestionController;
 use App\Http\Controllers\Api\ServerNotificationChannel\ServerNotificationChannelController;
@@ -28,6 +29,14 @@ Route::group(['prefix' => 'auth'], static function () {
 Route::group(['prefix' => 'status/{server}/{token}'], static function () {
     Route::post('', [HostController::class, 'update']);
     Route::get('', [ClientController::class, 'show']);
+});
+
+/*
+ * Legal
+ */
+Route::group(['prefix' => 'legal'], static function () {
+    Route::get('legal-notice', [LegalController::class, 'getLegalNotice']);
+    Route::get('privacy-notice', [LegalController::class, 'getPrivacyNotice']);
 });
 
 Route::group(['middleware' => 'auth:api'], static function () {
