@@ -2,6 +2,7 @@
   <v-container class="py-12">
     <div class="d-flex justify-center">
       <v-btn
+        v-if="hasLegalNotice"
         class="mx-1"
         @click="pushRouteTo({name: 'legal-notice'})"
         text
@@ -9,6 +10,7 @@
         {{ $t('home.footer.legal_notice') }}
       </v-btn>
       <v-btn
+        v-if="hasPrivacyNotice"
         class="mx-1"
         @click="pushRouteTo({name: 'privacy-notice'})"
         text
@@ -17,7 +19,8 @@
       </v-btn>
     </div>
     <a
-      class="footer-link mt-12"
+      class="footer-link"
+      :class="hasLegalNotice || hasPrivacyNotice ? 'mt-12' : 'mt-6 mb-2'"
       href="https://www.code-experience.org"
       target="_blank"
     >
@@ -30,6 +33,17 @@
     </a>
   </v-container>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      hasLegalNotice: process.env.MIX_HAS_LEGAL_NOTICE === 'true',
+      hasPrivacyNotice: process.env.MIX_HAS_PRIVACY_NOTICE === 'true'
+    }
+  }
+}
+</script>
 
 <style scoped lang="scss">
 .footer-link {
@@ -49,10 +63,6 @@
     img {
       width: 100%;
     }
-  }
-
-  .name-container {
-
   }
 }
 </style>
