@@ -18,7 +18,7 @@
     </div>
     <a
       class="footer-link mt-12"
-      href="https://code-experience.org"
+      href="https://www.code-experience.org"
       target="_blank"
     >
       <div class="logo-container">

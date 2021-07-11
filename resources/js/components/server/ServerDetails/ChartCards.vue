@@ -4,7 +4,7 @@
       <v-card-title>
         {{ $t('server.charts.requests') }}
       </v-card-title>
-      <v-divider />
+      <v-divider/>
       <v-card-text class="pt-6 pb-7">
         <v-skeleton-loader
           v-if="isLoading"
@@ -23,7 +23,7 @@
       <v-card-title>
         {{ $t('server.charts.downtime') }}
       </v-card-title>
-      <v-divider />
+      <v-divider/>
       <v-card-text class="pt-6 pb-7">
         <v-skeleton-loader
           v-if="isLoading"
@@ -34,6 +34,7 @@
           v-else
           :data="downtimeChartData"
           :curve="false"
+          :label="$t('server.charts.minutes')"
         />
       </v-card-text>
     </v-card>

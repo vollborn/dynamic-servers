@@ -74,7 +74,8 @@
     },
     "charts": {
       "requests": "Requests",
-      "downtime": "Downtime"
+      "downtime": "Downtime",
+      "minutes": "Minutes"
     },
     "customization": {
       "title": "Customization",
