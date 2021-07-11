@@ -15,17 +15,19 @@ const routes = [
     component: () => import('./../views/status/Status.vue'),
     meta: {auth: false}
   },
+
+  // Without Authentication
   {
     path: '/login',
     name: 'login',
     component: () => import('./../views/login/Login.vue'),
-    meta: {auth: false}
+    meta: {auth: false, noAuth: true}
   },
   {
     path: '/register',
     name: 'register',
     component: () => import('./../views/register/Register.vue'),
-    meta: {auth: false}
+    meta: {auth: false, noAuth: true}
   },
 
   // With Authentication
@@ -89,6 +91,8 @@ router.beforeEach((to, from, next) => {
   const auth = store.getters['auth/isAuth'];
   if (to.meta.auth && !auth) {
     return next({name: 'login'});
+  } else if (to.meta.noAuth && auth) {
+    return next({name: 'dashboard'});
   } else {
     return next();
   }
