@@ -27,6 +27,8 @@ export default {
     slimInterface() {
       return this.$route.name === 'status'
         || this.$route.name === 'home'
+        || this.$route.name === 'legal-notice'
+        || this.$route.name === 'privacy-notice'
         || this.$route.name === 'too-many-requests'
         || this.$route.name === 'not-found';
     }
