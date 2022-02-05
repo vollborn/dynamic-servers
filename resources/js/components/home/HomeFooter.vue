@@ -21,7 +21,7 @@
     <a
       class="footer-link"
       :class="hasLegalNotice || hasPrivacyNotice ? 'mt-12' : 'mt-6 mb-2'"
-      href="https://www.code-experience.org"
+      href="https://www.vollborn.dev"
       target="_blank"
     >
       <div class="logo-container">

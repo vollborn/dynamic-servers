@@ -66,6 +66,12 @@
         </v-card-text>
         <v-divider/>
         <v-card-actions>
+          <v-btn
+            text
+            @click="redirect('login')"
+          >
+            {{ $t('register.labels.login') }}
+          </v-btn>
           <v-spacer/>
           <v-btn
             type="submit"

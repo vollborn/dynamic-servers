@@ -39,7 +39,8 @@
       "username": "Username",
       "password": "Password",
       "accept_terms": "I accept that my data will be stored and further processed in order to provide the service.",
-      "register": "Register"
+      "register": "Register",
+      "login": "Login instead"
     },
     "states": {
       "empty": "Please enter a username first",
@@ -236,7 +237,7 @@
       },
       "private": {
         "title": "Private.",
-        "description": "Your privacy is important to me.\nNo third party trackers. No logs."
+        "description": "Your privacy is important to me.\nNo third party trackers."
       }
     },
     "about_rows": {

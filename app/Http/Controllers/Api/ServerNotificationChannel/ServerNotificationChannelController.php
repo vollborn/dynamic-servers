@@ -69,7 +69,7 @@ class ServerNotificationChannelController extends Controller
             ->first();
 
         if (!$notificationChannelModel) {
-            abort(404);
+            abort(Response::HTTP_NOT_FOUND);
         }
 
         try {
