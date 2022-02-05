@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BackgroundImageSeeder::class);
 
         // Testing
-        $this->call(TestSeeder::class);
+        // $this->call(TestSeeder::class);
     }
 }
